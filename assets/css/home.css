@@ -1,0 +1,169 @@
+/* Home · Figma 250:19728. The outlined card is an interaction state. */
+.home-page {
+  min-height: max(56.25rem, 100svh);
+  display: flex;
+  flex-direction: column;
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+.home-header,
+.home-hero,
+.home-footer p {
+  width: 100%;
+  max-width: calc(var(--largura) + var(--margem) * 2);
+  margin-inline: auto;
+  padding-inline: var(--margem);
+}
+
+.home-header { line-height: .875rem; }
+.home-header .assinatura,
+.home-header .utilitarios a { letter-spacing: .075rem; }
+.home-header .utilitarios { gap: .75rem 1.75rem; }
+.home-header .utilitarios a {
+  padding-block: .9375rem;
+  margin-block: -.9375rem;
+  box-shadow: none;
+  text-underline-offset: .375rem;
+}
+.home-header .utilitarios a:last-child { font-weight: 400; }
+.home-header .utilitarios a:hover { text-decoration: underline; }
+.home-page a:focus-visible { outline-color: var(--papel); border-radius: 0; }
+
+.home-main { flex: 1; display: flex; flex-direction: column; }
+.home-hero { padding-top: 7.9375rem; padding-bottom: 4.8125rem; }
+.home-eyebrow {
+  margin-bottom: 1.5rem;
+  font-family: var(--mono);
+  font-size: .6875rem;
+  font-weight: 500;
+  line-height: .875rem;
+  letter-spacing: .0875rem;
+  text-transform: uppercase;
+  color: var(--home-label);
+}
+.home-hero h1 {
+  font-size: clamp(2rem, 4.166667vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.033333;
+  letter-spacing: -.0366667em;
+}
+.home-hero h1 span { display: block; margin-top: .125rem; color: var(--home-muted); }
+
+.home-grid {
+  background-image:
+    linear-gradient(to right, var(--home-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--home-grid) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
+}
+.home-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--home-rule);
+  padding-top: 2.5rem;
+}
+.home-cards {
+  width: calc(100% - var(--margem) * 2);
+  max-width: 79.9375rem;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.75rem;
+}
+.home-card {
+  display: block;
+  min-width: 0;
+  padding: 2.5rem;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+.home-card:focus-visible {
+  background: var(--home-card-hover);
+  border-color: var(--home-card-border);
+}
+@media (hover: hover) and (pointer: fine) {
+  .home-card:hover {
+    background: var(--home-card-hover);
+    border-color: var(--home-card-border);
+  }
+}
+.home-card-art { display: block; position: relative; height: 12.5rem; pointer-events: none; }
+.home-card-object {
+  position: absolute;
+  left: 50%;
+  top: -1rem;
+  width: 11.25rem;
+  height: 11.25rem;
+  max-width: none;
+  object-fit: cover;
+  transform: translateX(-50%);
+}
+.home-card-lettering {
+  position: absolute;
+  left: 50%;
+  top: 2.0625rem;
+  width: 17.044875rem;
+  height: 14.34725rem;
+  display: grid;
+  place-items: center;
+  transform: translateX(-50%);
+}
+.home-card-lettering img {
+  width: 14.8125rem;
+  height: 11.125rem;
+  max-width: none;
+  transform: rotate(13.85deg);
+}
+.home-card--portfolio .home-card-object { top: .625rem; }
+.home-card--portfolio .home-card-lettering {
+  left: calc(50% + .9125rem);
+  top: 3.5rem;
+  width: 15.2941875rem;
+  height: 12.6640625rem;
+}
+.home-card--portfolio .home-card-lettering img {
+  width: 13.52625rem;
+  height: 10.1446875rem;
+  transform: rotate(11.63deg);
+}
+
+.home-footer {
+  margin-top: auto;
+  padding-block: 5.3125rem 3rem;
+  font-family: var(--mono);
+  font-size: .6875rem;
+  line-height: .875rem;
+  letter-spacing: .0375rem;
+  color: var(--home-muted);
+}
+.home-skip {
+  position: fixed;
+  top: .75rem;
+  left: .75rem;
+  z-index: 6;
+  padding: .5rem 1rem;
+  background: var(--papel);
+  color: var(--tinta);
+  transform: translateY(-200%);
+}
+.home-skip:focus { transform: none; }
+
+@media (max-width: 760px) {
+  .home-page { min-height: 100svh; }
+  .home-header { padding-top: 2rem; gap: 1.75rem; }
+  .home-header .utilitarios { gap: 1rem 1.25rem; }
+  .home-hero { padding-top: 5rem; padding-bottom: 3.5rem; }
+  .home-eyebrow { max-width: 40ch; line-height: 1.7; }
+  .home-hero h1 { font-size: clamp(2rem, 6vw, 2.875rem); line-height: 1.1; }
+  .home-hero h1 span { margin-top: .5rem; }
+  .home-cards { grid-template-columns: 1fr; gap: 1.5rem; }
+  .home-card { padding: 2.5rem 1rem; }
+  .home-grid { padding-top: 1.5rem; }
+  .home-footer { padding-block: 3rem 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-card { transition: none; }
+}

@@ -15,6 +15,12 @@
   --regua:#D9D7D2;      /* divisórias e fios secundários */
   --coluna:#EEEDE9;     /* fios de coluna do fundo, placeholders */
   --redline:#D5300F;    /* acento de anotação — uso escasso */
+  --home-muted:#6B6760;
+  --home-label:#8E8981;
+  --home-grid:#121110;
+  --home-rule:#1F1E1C;
+  --home-card-hover:rgb(32 32 32 / .5);
+  --home-card-border:rgb(224 224 239 / .69);
 
   /* ── tipo ────────────────────────────────────────────────── */
   --display:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
