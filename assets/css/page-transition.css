@@ -27,6 +27,36 @@
   animation: lift-sticker 760ms cubic-bezier(.22, .75, .2, 1) both;
 }
 .page-departure-sticker .home-card-art { height: 100%; }
+.page-departure[data-sticker="about"],
+html[data-page-arrival="about"] {
+  --transition-sticker: url('../images/home/sobre-mim.png');
+  --transition-sticker-tilt: 13.85deg;
+}
+.page-departure[data-sticker="portfolio"],
+html[data-page-arrival="portfolio"] {
+  --transition-sticker: url('../images/home/portfolio.png');
+  --transition-sticker-tilt: 11.63deg;
+}
+.page-departure::after,
+html[data-page-arrival]::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 102;
+  width: clamp(15rem, 30vw, 32rem);
+  aspect-ratio: 4 / 3;
+  background: var(--transition-sticker) center / contain no-repeat;
+  filter: drop-shadow(0 .75rem 1.5rem rgb(0 0 0 / .14));
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(var(--transition-sticker-tilt));
+}
+.page-departure::after {
+  animation: show-transition-sticker 760ms cubic-bezier(.22, .75, .2, 1) both;
+}
+html[data-page-arrival]::after {
+  animation: release-transition-sticker 520ms 100ms cubic-bezier(.22, .75, .2, 1) both;
+}
 .home-card[data-departing] .home-card-art { visibility: hidden; }
 .home-page .home-card[data-departing] { border-color: transparent; background: transparent; outline: none; }
 .home-page.is-departing .home-header,
@@ -44,13 +74,33 @@
     transform: translate(0, -2rem) rotate(var(--departure-tilt)) scale(1.1);
     opacity: 1;
   }
-  65% {
+  56% {
     transform: translate(var(--departure-x), var(--departure-y)) rotate(0) scale(1.45);
-    opacity: 1;
+    opacity: 0;
   }
   100% {
     transform: translate(var(--departure-x), calc(var(--departure-y) - 1.5rem)) rotate(0) scale(1.65);
     opacity: 0;
+  }
+}
+@keyframes show-transition-sticker {
+  0%, 55% {
+    opacity: 0;
+    transform: translate(-50%, -40%) rotate(calc(var(--transition-sticker-tilt) + 8deg)) scale(.85);
+  }
+  85%, 100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--transition-sticker-tilt)) scale(1);
+  }
+}
+@keyframes release-transition-sticker {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--transition-sticker-tilt)) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -85%) rotate(calc(var(--transition-sticker-tilt) - 8deg)) scale(1.1);
   }
 }
 @keyframes unfold-page {
@@ -74,7 +124,7 @@ html[data-page-arrival]::before {
   z-index: 100;
   background: #faf8f4;
   pointer-events: none;
-  animation: reveal-page 460ms cubic-bezier(.76, 0, .24, 1) both;
+  animation: reveal-page 460ms 80ms cubic-bezier(.76, 0, .24, 1) both;
 }
 html[data-page-arrival] .hero,
 html[data-page-arrival] .pf-hero,
@@ -90,7 +140,9 @@ html[data-page-arrival] .abertura {
   to { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .page-departure, html[data-page-arrival]::before { display: none; }
+  .page-departure,
+  html[data-page-arrival]::before,
+  html[data-page-arrival]::after { display: none; }
   html[data-page-arrival] .hero,
   html[data-page-arrival] .pf-hero,
   html[data-page-arrival] .abertura { animation: none; }

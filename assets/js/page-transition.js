@@ -85,6 +85,7 @@
         var kind = link.dataset.pageTransition;
         var overlay = document.createElement('div');
         overlay.className = 'page-departure';
+        overlay.dataset.sticker = kind;
         overlay.setAttribute('aria-hidden', 'true');
         overlay.style.setProperty('--departure-origin-x', (bounds.left + bounds.width / 2) + 'px');
         overlay.style.setProperty('--departure-origin-y', (bounds.top + bounds.height / 2) + 'px');
