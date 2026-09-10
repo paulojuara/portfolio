@@ -1,0 +1,97 @@
+/* A selected sticker lifts away and unfolds the next page. */
+.page-departure {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: progress;
+}
+.page-departure-sheet {
+  position: absolute;
+  inset: 0;
+  background: #faf8f4;
+  clip-path: polygon(
+    var(--departure-origin-x) var(--departure-origin-y),
+    var(--departure-origin-x) var(--departure-origin-y),
+    var(--departure-origin-x) var(--departure-origin-y),
+    var(--departure-origin-x) var(--departure-origin-y)
+  );
+  animation: unfold-page 460ms 260ms cubic-bezier(.76, 0, .24, 1) forwards;
+}
+.page-departure-sticker {
+  position: absolute;
+  z-index: 1;
+  transform-origin: center;
+  will-change: transform, opacity;
+  animation: lift-sticker 760ms cubic-bezier(.22, .75, .2, 1) both;
+}
+.page-departure-sticker .home-card-art { height: 100%; }
+.home-card[data-departing] .home-card-art { visibility: hidden; }
+.home-page .home-card[data-departing] { border-color: transparent; background: transparent; outline: none; }
+.home-page.is-departing .home-header,
+.home-page.is-departing .home-hero,
+.home-page.is-departing .home-footer,
+.home-page.is-departing .home-card:not([data-departing]) {
+  opacity: .16;
+  transition: opacity 280ms ease;
+}
+.home-page.is-departing .mira { opacity: 0; }
+
+@keyframes lift-sticker {
+  0% { transform: translate(0, 0) rotate(0) scale(1); opacity: 1; }
+  24% {
+    transform: translate(0, -2rem) rotate(var(--departure-tilt)) scale(1.1);
+    opacity: 1;
+  }
+  65% {
+    transform: translate(var(--departure-x), var(--departure-y)) rotate(0) scale(1.45);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--departure-x), calc(var(--departure-y) - 1.5rem)) rotate(0) scale(1.65);
+    opacity: 0;
+  }
+}
+@keyframes unfold-page {
+  38% {
+    clip-path: polygon(
+      calc(var(--departure-origin-x) - 1.25rem) 22%,
+      calc(var(--departure-origin-x) + 1.25rem) 18%,
+      calc(var(--departure-origin-x) + 1.25rem) 78%,
+      calc(var(--departure-origin-x) - 1.25rem) 82%
+    );
+  }
+  78% { clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%); }
+  100% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+
+/* Set before first paint, and consumed once, only for these card clicks. */
+html[data-page-arrival]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #faf8f4;
+  pointer-events: none;
+  animation: reveal-page 460ms cubic-bezier(.76, 0, .24, 1) both;
+}
+html[data-page-arrival] .hero,
+html[data-page-arrival] .pf-hero,
+html[data-page-arrival] .abertura {
+  animation: arrive-page-content 540ms 80ms cubic-bezier(.22, .75, .2, 1) both;
+}
+@keyframes reveal-page {
+  from { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+  to { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+}
+@keyframes arrive-page-content {
+  from { opacity: .4; transform: translateY(1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-departure, html[data-page-arrival]::before { display: none; }
+  html[data-page-arrival] .hero,
+  html[data-page-arrival] .pf-hero,
+  html[data-page-arrival] .abertura { animation: none; }
+}

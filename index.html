@@ -22,6 +22,8 @@
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/home.css?v=2">
 <link rel="stylesheet" href="assets/css/interactions.css">
+<link rel="stylesheet" href="assets/css/page-transition.css?v=1">
+<script src="assets/js/page-transition.js?v=1"></script>
 <script src="assets/js/cursor.js" defer></script>
 </head>
 
@@ -42,13 +44,13 @@
     </section>
     <div class="home-grid">
       <nav class="home-cards" aria-label="Explore o site">
-        <a class="home-card home-card--about" href="sobre-mim.html" aria-label="Sobre mim">
+        <a class="home-card home-card--about" href="sobre-mim.html" aria-label="Sobre mim" data-page-transition="about">
           <span class="home-card-art" aria-hidden="true">
             <img class="home-card-object" src="assets/images/home/retrato.png" width="180" height="180" alt="" decoding="async">
             <span class="home-card-lettering"><img src="assets/images/home/sobre-mim.png" width="237" height="178" alt="" decoding="async"></span>
           </span>
         </a>
-        <a class="home-card home-card--portfolio" href="projetos/index.html" aria-label="Portfólio">
+        <a class="home-card home-card--portfolio" href="projetos/index.html" aria-label="Portfólio" data-page-transition="portfolio">
           <span class="home-card-art" aria-hidden="true">
             <img class="home-card-object" src="assets/images/home/caderno.png" width="180" height="180" alt="" decoding="async">
             <span class="home-card-lettering"><img src="assets/images/home/portfolio.png" width="216" height="162" alt="" decoding="async"></span>
