@@ -55,6 +55,7 @@ dt{font-size:.5625rem;line-height:.75rem;margin-bottom:.5rem;letter-spacing:0}
 .case-figure a{display:block;border-radius:.25rem}
 .case-figure img{width:100%}
 .board .case-figure a,.prioritization .case-figure a{border-radius:.75rem}
+.board--square .case-figure a,.board--square img{border-radius:0}
 .board h3{font-size:1.75rem;font-weight:600;line-height:1.214;margin-bottom:2rem}
 .board+.board{margin-top:4rem}
 .prioritization{display:grid;grid-template-columns:272fr 272fr 656fr;gap:3.5rem;align-items:start}
