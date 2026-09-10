@@ -1,0 +1,85 @@
+{
+  "figmaFileKey": "TvLJ3bRAY0jKiQPjm8BL2R",
+  "frameId": "193:3",
+  "exportedAt": "2026-09-09",
+  "assets": [
+    {
+      "file": "csd-antes.png",
+      "nodeId": "207:329",
+      "width": 1312,
+      "height": 518
+    },
+    {
+      "file": "csd-depois.png",
+      "nodeId": "207:445",
+      "width": 1312,
+      "height": 630
+    },
+    {
+      "file": "priorizacao.png",
+      "nodeId": "207:196",
+      "width": 656,
+      "height": 442
+    },
+    {
+      "file": "arquitetura-camadas.png",
+      "nodeId": "218:17453",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "file": "arquitetura-no-central.png",
+      "nodeId": "218:17470",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "file": "arquitetura-matriz.png",
+      "nodeId": "218:17493",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "file": "arquitetura-raias.png",
+      "nodeId": "218:17527",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "file": "escala-tokens.png",
+      "nodeId": "194:54",
+      "width": 624,
+      "height": 236
+    },
+    {
+      "file": "global-tokens.png",
+      "nodeId": "218:7725",
+      "width": 1312,
+      "height": 836
+    },
+    {
+      "file": "interface-antes-depois.png",
+      "nodeId": "218:18594",
+      "width": 1312,
+      "height": 643
+    },
+    {
+      "file": "piloto-claro-escuro.png",
+      "nodeId": "218:13127",
+      "width": 1319,
+      "height": 632
+    },
+    {
+      "file": "storybook.png",
+      "nodeId": "235:19705",
+      "width": 638,
+      "height": 444
+    },
+    {
+      "file": "comunicacao-executiva.png",
+      "nodeId": "218:19639",
+      "width": 1328,
+      "height": 576
+    }
+  ]
+}

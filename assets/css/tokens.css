@@ -1,0 +1,38 @@
+/* ============================================================
+   tokens.css — variáveis de design do site
+   Extraídas do arquivo do Figma (TvLJ3bRAY0jKiQPjm8BL2R).
+   Toda página do site carrega este arquivo primeiro.
+   Nenhum valor de cor, tipo ou espaço deve ser escrito
+   direto nas páginas: se não existe aqui, cria aqui.
+   ============================================================ */
+
+:root{
+  /* ── cor ─────────────────────────────────────────────────── */
+  --papel:#FAF8F4;      /* superfície da página */
+  --tinta:#0B0B0A;      /* texto principal, réguas fortes */
+  --corpo:#383734;      /* texto corrido */
+  --apagado:#6E6B64;    /* rótulos, notas, metadados */
+  --regua:#D9D7D2;      /* divisórias e fios secundários */
+  --coluna:#EEEDE9;     /* fios de coluna do fundo, placeholders */
+  --redline:#D5300F;    /* acento de anotação — uso escasso */
+
+  /* ── tipo ────────────────────────────────────────────────── */
+  --display:"Geist",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  /* escala fluida: exata em 1440, encolhe proporcionalmente */
+  --t-hero:clamp(1.875rem,4.05vw,3.5rem);
+  --t-chamada:clamp(1.75rem,3.2vw,2.75rem);
+  --t-declaracao:clamp(1.0625rem,1.45vw,1.25rem);
+  --t-titulo:clamp(1.0625rem,1.35vw,1.1875rem);
+  --t-item:clamp(.9375rem,1.2vw,1.0625rem);
+  --t-apoio:clamp(.875rem,1.05vw,.9375rem);
+  --t-rotulo:.6875rem;
+  --t-nota:.5625rem;
+
+  /* ── grade e ritmo ───────────────────────────────────────── */
+  --margem:clamp(1.5rem,4.45vw,4rem);
+  --largura:1312px;                              /* 1440 − 2×64 */
+  --respiro-secao:clamp(2.75rem,5.55vw,5rem);    /* 80px em 1440 */
+  --gap-rotulo:clamp(1.75rem,2.9vw,2.375rem);    /* 38px em 1440 */
+}

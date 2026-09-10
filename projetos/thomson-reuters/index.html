@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dom DS na Thomson Reuters: diagnóstico, arquitetura de tokens, componentes e governança. Um caso de Paulo Henrique Araújo.">
+  <meta name="author" content="Paulo Henrique Araújo">
+  <meta name="theme-color" content="#0d0d0b">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Dom DS · Thomson Reuters — Paulo Henrique Araújo">
+  <meta property="og:description" content="Reconstruir a fundação de um design system: estratégia, arquitetura, produto e Design Ops.">
+  <title>Dom DS · Thomson Reuters — Paulo Henrique Araújo</title>
+  <link rel="icon" type="image/png" href="../../assets/images/favicon.png?v=2">
+  <link rel="preload" href="../../assets/fonts/geist-variable.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="../../assets/css/case.css">
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <header class="case-header dark">
+    <div class="container header-inner">
+      <a class="signature" href="../../index.html"><span>Paulo Henrique Araujo</span><small>Senior Product Designer · Design Systems &amp; Ops</small></a>
+      <nav aria-label="Navegação principal"><a href="../../index.html">Página inicial</a><a href="https://drive.google.com/file/d/1IDmOCyvFimGzlWM-LHk54c8WAuruA6YC/view" target="_blank" rel="noopener noreferrer">Meu resumo</a><a href="#contato">Fale comigo</a></nav>
+    </div>
+  </header>
+  <main id="conteudo" tabindex="-1">
+    <section class="case-hero dark" aria-labelledby="case-title">
+      <div class="container">
+        <div class="hero-meta mono"><p>Thomson Reuters Brasil | Design System Foundation</p><p>Thomson Reuters · 2025 — 2026</p></div>
+        <div class="hero-title"><h1 id="case-title">Dom DS</h1><p>Reconstruir a fundação de um design system parado havia um ano, dentro de uma unidade que acabava de se desassociar do sistema global.</p></div>
+        <dl class="case-facts">
+          <div><dt>Papel</dt><dd>Design system: fundação, produto e Design Ops</dd></div>
+          <div><dt>Período</dt><dd>2025 diagnóstico e fundação · 2026 em andamento</dd></div>
+          <div><dt>Alcance</dt><dd>Tax &amp; Accounting Brazil · Domínio Contábil, Conta PJ, Benefícios e Contabilidade Digital</dd></div>
+          <div><dt>Base</dt><dd>18 produtos com potencial de adoção · 4 imediatos, 2 pilotados</dd></div>
+        </dl>
+      </div>
+    </section>
+    <section class="container section context" aria-labelledby="context-title">
+      <div class="section-title"><p class="eyebrow">Contexto</p><h2 id="context-title">Um ano de trabalho<br>sem fundação.</h2></div>
+      <div class="prose"><p>Fui contratado para atuar num design system que já estava em construção havia um ano. No onboarding ficou claro que a iniciativa não tinha estrutura: sem pessoas dedicadas, sem planejamento de produto, sem definição com engenharia, sem stack tecnológica e sem processo. No Figma não existia um design system, existia um arquivo.</p><p>O contexto era de desassociação. A unidade Tax &amp; Accounting Brazil estava saindo dos sistemas globais, Bento UI e Saffron, e por decisão de diretoria não usaria o Saffron. Enquanto isso o time tratava style guide como entrega de design system e acessibilidade como contraste. A expressão design system já tinha se desgastado antes de o sistema existir.</p></div>
+      <dl class="context-notes"><div><dt>Iniciativa sem planejamento</dt><dd>1 ano</dd></div><div><dt>Pessoas dedicadas</dt><dd>1</dd></div><div><dt>Stack definida</dt><dd>Nenhuma</dd></div></dl>
+    </section>
+
+    <section class="container section ruled discovery" aria-labelledby="discovery-title">
+      <div class="section-heading"><div class="section-title"><p class="eyebrow">Descoberta</p><h2 id="discovery-title">O que entrou<br>no quarter.</h2></div><p class="prose">A matriz de CSD foi o instrumento que sustentou a escolha de reconstruir a base em vez de continuar entregando componente.</p></div>
+      <div class="board"><h3>Antes</h3><figure class="case-figure "><a href="../../assets/images/thomson-reuters/csd-antes.png" target="_blank" rel="noopener noreferrer" aria-label="Matriz CSD antes do diagnóstico: certezas, suposições e dúvidas sobre o design system. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/csd-antes.png" width="1312" height="518" alt="Matriz CSD antes do diagnóstico: certezas, suposições e dúvidas sobre o design system" loading="lazy" decoding="async"></a></figure></div>
+      <div class="board"><h3>Depois</h3><figure class="case-figure "><a href="../../assets/images/thomson-reuters/csd-depois.png" target="_blank" rel="noopener noreferrer" aria-label="Matriz CSD depois do diagnóstico, com o aprendizado organizado em certezas, suposições e dúvidas. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/csd-depois.png" width="1312" height="630" alt="Matriz CSD depois do diagnóstico, com o aprendizado organizado em certezas, suposições e dúvidas" loading="lazy" decoding="async"></a></figure></div>
+    </section>
+    <section class="container section ruled prioritization" aria-labelledby="priority-title">
+      <div class="section-title"><p class="eyebrow">Priorização</p><h2 id="priority-title">O que entrou<br>no quarter.</h2></div>
+      <p class="prose">A matriz de esforço × impacto foi o instrumento que sustentou a escolha de reconstruir a base em vez de continuar entregando componente.</p>
+      <figure class="case-figure "><a href="../../assets/images/thomson-reuters/priorizacao.png" target="_blank" rel="noopener noreferrer" aria-label="Matriz de esforço e impacto utilizada para priorizar o trabalho de fundação do Dom DS. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/priorizacao.png" width="656" height="442" alt="Matriz de esforço e impacto utilizada para priorizar o trabalho de fundação do Dom DS" loading="lazy" decoding="async"></a></figure>
+    </section>
+    <section class="decisions dark" aria-labelledby="decisions-title">
+      <div class="container section">
+        <div class="section-heading"><div class="section-title"><p class="eyebrow">Decisões</p><h2 id="decisions-title">Quatro decisões.<br>Quatro custos.</h2></div><p class="prose">Cada decisão aqui vem com o que ela custou. O que foi cortado é justamente a parte que costuma sumir de um case.</p></div>
+        <ol class="decision-list">
+          <li class="decision-row">
+            <div class="decision-title"><p class="eyebrow">01</p><h3>Diagnosticar em três camadas</h3></div>
+            <div><p class="eyebrow">Decisão</p><p>Antes de propor solução, mapear o problema em operacional, tático e estratégico, separando bagunça de biblioteca de posicionamento institucional.</p></div>
+            <div><p class="eyebrow">O que ficou de fora</p><p>A entrega rápida de componentes, que teria comprado paz no curto prazo e mantido a base frágil.</p></div>
+            <div class="consequence"><p class="eyebrow">Consequência</p><p>O reposicionamento do design system virou item de trabalho explícito, no mesmo nível da reestruturação técnica.</p></div>
+          </li>
+          <li class="decision-row">
+            <div class="decision-title"><p class="eyebrow">02</p><h3>Fundação antes de catálogo</h3></div>
+            <div><p class="eyebrow">Decisão</p><p>Montar uma matriz de esforço × impacto para o quarter e priorizar fundação: inventário dos style guides legados, escopo do pacote V1, stack, padrões de código e fonte de verdade.</p></div>
+            <div><p class="eyebrow">O que ficou de fora</p><p>Continuar produzindo componentes sobre a base existente. A biblioteca legada Design System TR foi descontinuada, não mantida.</p></div>
+            <div class="consequence"><p class="eyebrow">Consequência</p><p>As bibliotecas foram remodularizadas em cinco: Design Tokens, Assets, Core Web, Core App e Helpers.</p></div>
+          </li>
+          <li class="decision-row">
+            <div class="decision-title"><p class="eyebrow">03</p><h3>Stack agnóstica a framework</h3></div>
+            <div><p class="eyebrow">Decisão</p><p>Adotar Web Components com Stencil para os produtos Angular e React, e Core App em React Native. Storybook com Chromatic como documentação.</p></div>
+            <div><p class="eyebrow">O que ficou de fora</p><p>Uma biblioteca React nativa: mais rápida de escrever e incapaz de atender Angular sem duplicar o trabalho.</p></div>
+            <div class="consequence"><p class="eyebrow">Consequência</p><p>O Core Web saiu de 45 para 67 componentes entre janeiro e junho de 2026, alta de 48%, com 45 em homologação e 22 em desenvolvimento.</p></div>
+          </li>
+          <li class="decision-row">
+            <div class="decision-title"><p class="eyebrow">04</p><h3>Provar em produto, não em deck</h3></div>
+            <div><p class="eyebrow">Decisão</p><p>Negociar capacity para um produto piloto e entregar a área de Certificados Digitais com o sistema aplicado, em modo claro e escuro.</p></div>
+            <div><p class="eyebrow">O que ficou de fora</p><p>A adoção ampla no primeiro ciclo. Um produto pilotado vale mais do que dezoito convencidos por apresentação.</p></div>
+            <div class="consequence"><p class="eyebrow">Consequência</p><p>O balanço de Q1 e Q2 sustentou o pleito de recursos, o assento na PI Planning do Q3 e um sponsor para o Dom DS.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+    <section class="container section architecture" aria-labelledby="architecture-title">
+      <p class="eyebrow">Exploração · Arquitetura de bibliotecas</p>
+      <div class="architecture-heading"><h2 id="architecture-title">Quatro formas de desenhar<br>a mesma coisa.</h2><p class="prose">Cada variante defende um argumento diferente. Escolher é decidir o que a imagem precisa provar, não qual fica mais bonita.</p></div>
+      <div class="architecture-grid">
+        <figure class="case-figure "><a href="../../assets/images/thomson-reuters/arquitetura-camadas.png" target="_blank" rel="noopener noreferrer" aria-label="Arquitetura em camadas: tokens, bibliotecas e produtos do Dom DS. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/arquitetura-camadas.png" width="640" height="480" alt="Arquitetura em camadas: tokens, bibliotecas e produtos do Dom DS" loading="lazy" decoding="async"></a></figure>
+        <figure class="case-figure "><a href="../../assets/images/thomson-reuters/arquitetura-no-central.png" target="_blank" rel="noopener noreferrer" aria-label="Arquitetura em nó central: Design Tokens conectados às bibliotecas Assets, Core Web, Core App e Helpers. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/arquitetura-no-central.png" width="640" height="480" alt="Arquitetura em nó central: Design Tokens conectados às bibliotecas Assets, Core Web, Core App e Helpers" loading="lazy" decoding="async"></a></figure>
+        <figure class="case-figure "><a href="../../assets/images/thomson-reuters/arquitetura-matriz.png" target="_blank" rel="noopener noreferrer" aria-label="Arquitetura em matriz: responsabilidades de design e engenharia nas bibliotecas do sistema. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/arquitetura-matriz.png" width="640" height="480" alt="Arquitetura em matriz: responsabilidades de design e engenharia nas bibliotecas do sistema" loading="lazy" decoding="async"></a></figure>
+        <figure class="case-figure "><a href="../../assets/images/thomson-reuters/arquitetura-raias.png" target="_blank" rel="noopener noreferrer" aria-label="Arquitetura em raias: Figma publicado, comunicação à engenharia, pipeline com Style Dictionary e consumo pelos produtos. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/arquitetura-raias.png" width="640" height="480" alt="Arquitetura em raias: Figma publicado, comunicação à engenharia, pipeline com Style Dictionary e consumo pelos produtos" loading="lazy" decoding="async"></a></figure>
+      </div>
+    </section>
+    <section class="container section ruled artifacts" aria-labelledby="artifacts-title">
+      <div class="section-heading"><div class="section-title"><p class="eyebrow">Artefato</p><h2 id="artifacts-title">A base,<br>não o catálogo.</h2></div><p class="prose">A entrega que sustenta o resto não é componente: é a arquitetura de tokens, com razão de contraste documentada passo a passo e estrutura alias preparada para múltiplos temas.</p></div>
+      <div class="artifact-summary">
+        <figure class="case-figure "><a href="../../assets/images/thomson-reuters/escala-tokens.png" target="_blank" rel="noopener noreferrer" aria-label="Escala de tokens de cor com razões de contraste documentadas por passo. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/escala-tokens.png" width="624" height="236" alt="Escala de tokens de cor com razões de contraste documentadas por passo" loading="lazy" decoding="async"></a></figure>
+        <dl class="artifact-facts">
+          <div><dt>Core Web · Stencil</dt><dd>45 → 67 componentes entre janeiro e junho de 2026 · <strong>45 em homologação</strong>, 22 em desenvolvimento</dd></div>
+          <div><dt>Arquitetura de tokens</dt><dd>Cor, forma, tipografia e movimento · escala completa com contraste por passo e alias multi-tema</dd></div>
+          <div><dt>Bibliotecas</dt><dd>Design Tokens, Assets, Core Web, Core App e Helpers · Design System TR descontinuada</dd></div>
+        </dl>
+      </div>
+      <figure class="case-figure "><a href="../../assets/images/thomson-reuters/global-tokens.png" target="_blank" rel="noopener noreferrer" aria-label="Prancha completa dos tokens globais: cor, forma, tipografia e movimento, com escalas, medidas e curvas. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/global-tokens.png" width="1312" height="836" alt="Prancha completa dos tokens globais: cor, forma, tipografia e movimento, com escalas, medidas e curvas" loading="lazy" decoding="async"></a></figure>
+    </section>
+    <section class="container section ruled applied" aria-labelledby="applied-title">
+      <div class="section-heading"><div class="section-title"><p class="eyebrow">O sistema aplicado</p><h2 id="applied-title">O sistema<br>em produto.</h2></div><p class="prose">O piloto de Certificados Digitais foi onde o Dom DS deixou de ser biblioteca e virou tela. Modo claro e escuro na mesma base de tokens alias.</p></div>
+      <figure class="case-figure "><a href="../../assets/images/thomson-reuters/interface-antes-depois.png" target="_blank" rel="noopener noreferrer" aria-label="Comparação da interface de Certificados Digitais antes e depois da aplicação do Dom DS. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/interface-antes-depois.png" width="1312" height="643" alt="Comparação da interface de Certificados Digitais antes e depois da aplicação do Dom DS" loading="lazy" decoding="async"></a></figure>
+      <figure class="case-figure "><a href="../../assets/images/thomson-reuters/piloto-claro-escuro.png" target="_blank" rel="noopener noreferrer" aria-label="Telas do piloto de Certificados Digitais nos modos claro e escuro. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/piloto-claro-escuro.png" width="1319" height="632" alt="Telas do piloto de Certificados Digitais nos modos claro e escuro" loading="lazy" decoding="async"></a></figure>
+      <div class="storybook">
+        <figure class="case-figure "><a href="../../assets/images/thomson-reuters/storybook.png" target="_blank" rel="noopener noreferrer" aria-label="Storybook do Dom DS com a documentação e a visualização de componentes. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/storybook.png" width="638" height="444" alt="Storybook do Dom DS com a documentação e a visualização de componentes" loading="lazy" decoding="async"></a></figure>
+        <div class="storybook-caption"><p class="eyebrow">Documentação em código</p><h3>O sistema fora do Figma.</h3><p>O Storybook documenta os componentes e permite consultar sua implementação. Enquanto as métricas de engenharia seguem em coleta, este registro mostra o sistema também em código.</p></div>
+      </div>
+    </section>
+    <section class="results dark" aria-labelledby="results-title">
+      <div class="container section">
+        <div class="section-heading"><h2 id="results-title" class="eyebrow">Resultado</h2><p class="prose">Números de junho de 2026. O caso está em andamento: as métricas de engenharia ainda estão sendo coletadas, e o que acompanhei foi o uso em design.</p></div>
+        <dl class="result-grid">
+          <div><dt>Componentes Core Web · +48% em seis meses</dt><dd>45 → 67</dd></div>
+          <div><dt>Instâncias do sistema em design</dt><dd>64.496</dd></div>
+          <div><dt>Horas economizadas · produtividade 2,8x</dt><dd>3.225h</dd></div>
+          <div><dt>Do time de design usando o sistema</dt><dd>29%</dd></div>
+        </dl>
+      </div>
+    </section>
+    <section class="container section executive" aria-labelledby="executive-title">
+      <div class="section-heading"><div class="section-title"><p class="eyebrow">Comunicação executiva</p><h2 id="executive-title">Do dado ao orçamento.</h2></div><p class="prose">Design system não morre por falta de componente. Morre quando ninguém acima consegue explicar por que ele existe. Metade deste trabalho foi técnico; a outra metade foi transformar uso em argumento de investimento.</p></div>
+      <figure class="case-figure "><a href="../../assets/images/thomson-reuters/comunicacao-executiva.png" target="_blank" rel="noopener noreferrer" aria-label="Materiais de comunicação executiva: dados de uso, oportunidades de negócio e plano de investimento do Dom DS. Abrir imagem em tamanho original"><img src="../../assets/images/thomson-reuters/comunicacao-executiva.png" width="1328" height="576" alt="Materiais de comunicação executiva: dados de uso, oportunidades de negócio e plano de investimento do Dom DS" loading="lazy" decoding="async"></a></figure>
+      <div class="timeline">
+        <h3 class="eyebrow">Escalada do produto</h3>
+        <ol><li><p class="timeline-year mono">2025</p><p class="timeline-text">Ingresso de perfil sênior na iniciativa</p></li><li><p class="timeline-year mono"><span aria-hidden="true">&nbsp;</span></p><p class="timeline-text">Análise de contexto e plano de ação</p></li><li><p class="timeline-year mono"><span aria-hidden="true">&nbsp;</span></p><p class="timeline-text">Roadmap e priorização do quarter</p></li><li><p class="timeline-year mono"><span aria-hidden="true">&nbsp;</span></p><p class="timeline-text">Reestruturação do design system</p></li><li><p class="timeline-year mono"><span aria-hidden="true">&nbsp;</span></p><p class="timeline-text">Produto piloto entregue</p></li><li><p class="timeline-year mono"><span aria-hidden="true">&nbsp;</span></p><p class="timeline-text">Balanço de Q1 e Q2 e pleito de recursos</p></li><li class="achieved"><p class="timeline-year mono">2026</p><p class="timeline-text">Assento na PI Planning e sponsor</p><p class="eyebrow timeline-status">Conquistado</p></li></ol>
+      </div>
+      <div class="executive-details">
+        <div><h3 class="eyebrow">O que foi apresentado</h3><ul><li>Balanço de Q1 e Q2 com métricas de uso</li><li>Oportunidade de negócio: 18 produtos com potencial, 4 imediatos, 2 pilotados</li><li>Plano de Q3 com escopo, recurso e risco</li><li>Reposicionamento do design system na unidade</li></ul></div>
+        <div><h3 class="eyebrow">Para quem</h3><ul><li>Diretoria de produto e de engenharia</li><li>Coordenação de plataforma</li><li>PI Planning da unidade</li></ul></div>
+        <div><h3 class="eyebrow">O que foi obtido</h3><ul><li>Pleito de recursos aprovado</li><li>Assento na PI Planning do Q3</li><li>Sponsor dedicado para o Dom DS</li></ul></div>
+      </div>
+    </section>
+    <section class="container section ruled reflection" aria-labelledby="reflection-title">
+      <div class="section-title"><p class="eyebrow">O que eu faria diferente</p><h2 id="reflection-title">O número que<br>eu não gosto.</h2></div>
+      <div class="prose"><p>29% do time de design usando é o dado mais desconfortável desta página e o mais importante dela. A fundação técnica ficou pronta antes de a adoção existir, que é exatamente o erro que eu já tinha visto acontecer em outro sistema.</p><p>A diferença é que dessa vez eu sei o que falta. As métricas de engenharia ficaram em aberto, ou seja, não sei quanto do sistema chegou a código de produto. Enquanto esse número não existir, o que eu tenho é uso em design, e uso em design não é adoção.</p></div>
+    </section>
+    <section id="contato" class="contact dark" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-content">
+          <div><p class="eyebrow">/ Próximo passo</p><h2 id="contact-title"><a href="mailto:contato@paulohenriquearaujo.com">Fale comigo <span aria-hidden="true">↗</span></a></h2><p class="contact-description">Produto, sistemas de design e times que precisam ganhar consistência sem perder velocidade.</p></div>
+          <div class="contact-links"><p class="eyebrow">Disponível para conversas</p><a href="https://www.linkedin.com/in/paulojuara/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a href="mailto:contato@paulohenriquearaujo.com">E-mail <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <footer class="case-footer"><nav aria-label="Navegação do rodapé"><a href="../../index.html">Página inicial</a><span aria-hidden="true">·</span><a href="../../sobre-mim.html">Sobre mim</a><span aria-hidden="true">·</span><a href="../index.html">Portfólio</a><span aria-hidden="true">·</span><a href="../../modo/index.html">Modo</a></nav><p>São Paulo, Brasil · 2026</p></footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
