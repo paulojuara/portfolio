@@ -8,7 +8,6 @@
   --surface-base: #0B0B0A;
   --mesh-line:    #121110;
   --hairline:     #1F1E1C;
-  --guia:         #2B2823;  /* fio da mira — linha de construção, passa por baixo */
 
   /* tinta */
   --ink-000: #FAF8F4;  /* 18.7:1 — display */
@@ -184,58 +183,6 @@ body {
   outline: 1px solid var(--ink-000);
   outline-offset: 6px;
   border-radius: 1px;
-}
-
-/* Seleção invertida — mesma lógica do bloco do Modo na home:
-   superfície clara, tinta escura. */
-::selection {
-  background: var(--ink-000);
-  color: var(--surface-base);
-}
-
-::-moz-selection {
-  background: var(--ink-000);
-  color: var(--surface-base);
-}
-
-/* ============================================================
-   MIRA
-   Fio-guia de desenho técnico. Só em ponteiro fino — em toque
-   não existe posição de cursor, então nem entra no DOM.
-   ============================================================ */
-.mira {
-  position: fixed;
-  inset: 0;
-  z-index: 1;              /* atrás do conteúdo, à frente da malha */
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 240ms ease;
-}
-
-.mira[data-ativa="true"] { opacity: 1; }
-
-.mira i {
-  position: absolute;
-  background: var(--guia);
-  display: block;
-}
-
-.mira .fio-v { top: 0; bottom: 0; width: 1px; transform: translateX(-0.5px); }
-.mira .fio-h { left: 0; right: 0; height: 1px; transform: translateY(-0.5px); }
-
-.mira .leitura {
-  position: absolute;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  line-height: 12px;
-  letter-spacing: 0.12em;
-  color: var(--ink-500);
-  white-space: nowrap;
-  transform: translate(14px, 12px);
-}
-
-@media (pointer: coarse), (hover: none) {
-  .mira { display: none; }
 }
 
 /* ============================================================

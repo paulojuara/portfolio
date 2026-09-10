@@ -1,0 +1,67 @@
+/* Shared selection and pointer guides for the portfolio. */
+:root {
+  --selection-background: #0b0b0a;
+  --selection-color: #faf8f4;
+}
+
+.dark,
+[data-surface="dark"] {
+  --selection-background: #faf8f4;
+  --selection-color: #0b0b0a;
+}
+
+::selection {
+  background: var(--selection-background);
+  color: var(--selection-color);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--selection-background);
+  color: var(--selection-color);
+  text-shadow: none;
+}
+
+.mira {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
+  mix-blend-mode: difference;
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.mira[data-ativa="true"] { opacity: 1; }
+
+.mira i {
+  position: absolute;
+  display: block;
+  background: #fff;
+  opacity: .14;
+}
+
+.mira .fio-v { left: 0; top: 0; bottom: 0; width: 1px; }
+.mira .fio-h { top: 0; left: 0; right: 0; height: 1px; }
+
+.mira .leitura {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: "Geist Mono", ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: .12em;
+  color: #fff;
+  opacity: .45;
+  white-space: nowrap;
+}
+
+@media (pointer: coarse), (hover: none), print {
+  .mira { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mira { transition: none; }
+}
