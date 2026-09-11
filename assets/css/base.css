@@ -26,10 +26,12 @@ a{color:inherit;text-decoration:none}
 a:focus-visible{outline:2px solid var(--redline);outline-offset:4px;border-radius:1px}
 
 /* ── a folha: conteúdo sobre os fios de coluna ─────────────── */
+/* O conteúdo ocupa a tela inteira: sem teto de largura, com a
+   margem proporcional. As medidas de leitura são resolvidas nos
+   próprios blocos de texto, não pelo container. */
 .folha{
   position:relative;
-  max-width:calc(var(--largura) + var(--margem) * 2);
-  margin-inline:auto;
+  width:100%;
   padding-inline:var(--margem);
 }
 .colunas{

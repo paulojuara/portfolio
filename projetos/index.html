@@ -3,55 +3,156 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Portfólio — Paulo Henrique Araújo</title>
-<meta name="description" content="Projetos de design de produto e design systems.">
+<title>Trabalhos selecionados — Paulo Henrique Araújo</title>
+<meta name="description" content="Quatro projetos escolhidos pelo tipo de problema que precisaram resolver — não pelo volume de telas produzidas.">
 <meta name="author" content="Paulo Henrique Araújo">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:title" content="Portfólio — Paulo Henrique Araújo">
-<meta property="og:description" content="Projetos de design de produto e design systems.">
-<meta name="theme-color" content="#FAF8F4">
+<meta property="og:title" content="Trabalhos selecionados — Paulo Henrique Araújo">
+<meta property="og:description" content="Cada projeto é apresentado pela decisão que moveu o produto, pelo que precisou ser cortado e pela consequência que veio depois.">
+<meta name="theme-color" content="#FFFFFF">
 
 <link rel="icon" type="image/png" href="../assets/images/favicon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/tokens.css?v=3">
 <link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/portfolio.css">
 <link rel="stylesheet" href="../assets/css/interactions.css">
-<link rel="stylesheet" href="../assets/css/page-transition.css?v=2">
-<script src="../assets/js/page-transition.js?v=2"></script>
+<link rel="stylesheet" href="../assets/css/page-transition.css?v=4">
+<script src="../assets/js/page-transition.js?v=4"></script>
 <script src="../assets/js/cursor.js" defer></script>
 </head>
 
-<body data-cursor-guides>
+<body class="portfolio-page" data-cursor-guides>
+<a class="pf-pular" href="#indice">Ir para o índice</a>
 <div class="folha">
-  <div class="colunas" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-  <header class="topo">
-    <span class="assinatura">Paulo Henrique Araújo</span>
+
+  <header class="topo pf-topo">
+    <span class="assinatura">Paulo Henrique Araujo<b>Senior Product Designer · Design Systems &amp; Ops</b></span>
     <nav class="utilitarios" aria-label="Utilidades">
       <a href="../index.html">Página inicial</a>
       <a href="https://drive.google.com/file/d/1IDmOCyvFimGzlWM-LHk54c8WAuruA6YC/view" target="_blank" rel="noopener noreferrer">Meu resumo</a>
-      <a href="mailto:contato@paulohenriquearaujo.com">Fale comigo</a>
+      <a href="../fale-comigo.html">Fale comigo</a>
     </nav>
   </header>
-  <main class="abertura">
-    <span class="rotulo">/ Portfólio</span>
-    <h1><b>Projetos por dentro.</b></h1>
-    <p style="max-width:44ch;margin-top:2rem;font-size:var(--t-declaracao);line-height:1.7;color:var(--corpo)">Decisão, corte, consequência. O trabalho por trás de produtos e sistemas de design.</p>
-    <article style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--linha, #dedbd3);max-width:48rem">
-      <p class="rotulo">Thomson Reuters Brasil · 2025 — 2026</p>
-      <h2 style="font-size:clamp(2rem,4vw,3rem);line-height:1.2;margin:1rem 0"><a href="thomson-reuters/index.html">Dom DS <span aria-hidden="true">↗</span></a></h2>
-      <p style="font-size:var(--t-declaracao);line-height:1.7;color:var(--corpo)">Reconstruir a fundação de um design system: diagnóstico, arquitetura de tokens, componentes e aplicação em produto.</p>
-    </article>
+
+  <main>
+    <section class="pf-hero" aria-labelledby="titulo">
+      <p class="pf-rotulo">Portfólio</p>
+      <h1 id="titulo">Trabalhos<span>selecionados.</span></h1>
+      <p class="pf-deck">Cada projeto é apresentado pela decisão que moveu o produto, pelo que precisou ser cortado e pela consequência que veio depois.</p>
+      <ul class="pf-chips">
+        <li>Design Systems</li>
+        <li>Product Strategy</li>
+        <li>UX/UI</li>
+        <li>Governança</li>
+      </ul>
+    </section>
+
+    <section class="pf-indice" id="indice" aria-labelledby="indice-titulo">
+      <div class="pf-indice__cabecalho">
+        <p class="pf-rotulo">Projetos</p>
+      </div>
+
+      <div class="pf-indice__intro">
+        <h2 id="indice-titulo">Uma seleção curta.<span>Sem catálogo.</span></h2>
+        <p>Quatro projetos escolhidos pelo tipo de problema que precisaram resolver — não pelo volume de telas produzidas.</p>
+      </div>
+
+      <ol class="pf-lista">
+        <li>
+          <a class="pf-case pf-case--alto" href="thomson-reuters/index.html">
+            <span class="pf-case__id">
+              <span class="pf-rotulo">2025 — 2026</span>
+              <span class="pf-case__empresa">Thomson Reuters</span>
+            </span>
+            <span class="pf-case__arg">
+              <span class="pf-rotulo">Design Systems</span>
+              <span class="pf-case__frase">Construir uma base comum para produtos contábil e financeiro diferentes, sem transformar o sistema em uma biblioteca genérica.</span>
+              <span class="pf-nota pf-case__escopo">Plataforma contábil e financeira</span>
+            </span>
+            <span class="pf-case__seta" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="pf-case" href="../manutencao.html">
+            <span class="pf-case__id">
+              <span class="pf-rotulo">2024 — 2025</span>
+              <span class="pf-case__empresa">Alelo</span>
+            </span>
+            <span class="pf-case__arg">
+              <span class="pf-rotulo">Design Systems</span>
+              <span class="pf-case__frase">Construir confiança em uma nova biblioteca e garantir a adesão por produto, design e engenharia.</span>
+              <span class="pf-nota pf-case__escopo">Produto em escala</span>
+            </span>
+            <span class="pf-case__seta" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="pf-case" href="../manutencao.html">
+            <span class="pf-case__id">
+              <span class="pf-rotulo">2022 — 2024</span>
+              <span class="pf-case__empresa">Crefisa</span>
+            </span>
+            <span class="pf-case__arg">
+              <span class="pf-rotulo">Open Finance</span>
+              <span class="pf-case__frase">Transformar uma obrigação regulatória em uma jornada clara, segura e entregável dentro de um prazo curto.</span>
+              <span class="pf-nota pf-case__escopo">Iniciação de pagamento</span>
+            </span>
+            <span class="pf-case__seta" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="pf-case pf-case--curto" href="../manutencao.html">
+            <span class="pf-case__id">
+              <span class="pf-rotulo">2021</span>
+              <span class="pf-case__empresa">Blue Express</span>
+            </span>
+            <span class="pf-case__arg">
+              <span class="pf-rotulo">Produto B2B</span>
+              <span class="pf-case__frase">Estruturar um produto acompanhado de ponta a ponta, da definição da experiência à entrega da primeira versão.</span>
+              <span class="pf-nota pf-case__escopo">Portal de parceiros</span>
+            </span>
+            <span class="pf-case__seta" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      </ol>
+    </section>
+
+    <section class="pf-fora" aria-labelledby="fora-titulo">
+      <div>
+        <p class="pf-rotulo">Fora do índice</p>
+        <h2 class="pf-fora__titulo" id="fora-titulo">Nem tudo<span>vira case.</span></h2>
+      </div>
+      <p class="pf-fora__texto">Consultorias intermediárias, projetos que morreram antes de sair e trabalho sob acordo de confidencialidade ficam de fora por escolha.</p>
+      <ul>
+        <li class="pf-nota">NDA</li>
+        <li class="pf-nota">Projetos encerrados</li>
+        <li class="pf-nota">Consultorias</li>
+      </ul>
+    </section>
+
   </main>
-  <footer class="rodape">
-    <span class="nota"><a href="../index.html">Página inicial</a> · <a href="../sobre-mim.html">Sobre mim</a> · <a href="../projetos/index.html">Portfólio</a> · <a href="../modo/index.html">modo</a></span>
-    <span class="nota"><a href="https://linkedin.com/in/paulojuara/" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span class="nota">São Paulo, Brasil · 2026</span>
+
+  <footer class="pf-contato" id="contato" aria-labelledby="contato-titulo">
+    <div class="pf-contato__topo">
+      <h2 class="pf-contato__titulo" id="contato-titulo"><a href="../fale-comigo.html">Fale comigo <span aria-hidden="true">↗</span></a></h2>
+      <p class="pf-contato__texto">Produto, sistemas de design e times que precisam ganhar consistência sem perder velocidade.</p>
+    </div>
+    <hr class="pf-contato__regua">
+    <div class="pf-rodape">
+      <p><a href="../index.html">Home</a><span aria-hidden="true"> · </span><a href="../sobre-mim.html">Sobre mim</a></p>
+      <p class="pf-nota">São Paulo, Brasil · 2026</p>
+    </div>
   </footer>
+
 </div>
 </body>
 </html>

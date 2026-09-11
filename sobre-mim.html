@@ -11,8 +11,8 @@
     <link rel="preload" href="assets/fonts/geist-mono-variable.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/interactions.css">
-    <link rel="stylesheet" href="assets/css/page-transition.css?v=2">
-    <script src="assets/js/page-transition.js?v=2"></script>
+    <link rel="stylesheet" href="assets/css/page-transition.css?v=4">
+    <script src="assets/js/page-transition.js?v=4"></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -22,7 +22,7 @@
         <nav class="navigation mono" aria-label="Navegação principal">
           <a href="index.html">Página inicial</a>
           <a href="https://drive.google.com/file/d/1IDmOCyvFimGzlWM-LHk54c8WAuruA6YC/view" target="_blank" rel="noopener noreferrer">Meu resumo</a>
-          <a href="#contato">Fale comigo</a>
+          <a href="fale-comigo.html">Fale comigo</a>
         </nav>
       </header>
 
@@ -30,13 +30,13 @@
         <div class="grid-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
         <section class="hero" aria-labelledby="titulo">
           <p class="eyebrow">Olá</p>
-          <h1 id="titulo">Olá, sou o Paulo.<br>Product Designer Senior e<br class="desktop-break"> Especialista em Design Systems.</h1>
+          <h1 id="titulo">Sou o Paulo.<br>Product Designer Senior</h1>
         </section>
 
-        <section class="introduction section" aria-labelledby="em-uma-frase">
+        <section class="introduction section" aria-label="Em uma frase">
           <div class="introduction-copy">
-            <h2 class="eyebrow" id="em-uma-frase">Em uma frase</h2>
-            <p>Trabalho no ponto onde design e código se encontram. Comecei escrevendo código, virei para produto, e desde então faço a mesma coisa em escalas diferentes: dar estrutura para times construírem rápido sem perder coerência. Design system é o nome que isso tem hoje.</p>
+            <p>Trabalho no ponto onde estratégia, design e tecnologia se encontram. Comecei escrevendo código, migrei para produto e, desde então, ajudo a transformar problemas complexos em experiências claras, produtos consistentes e decisões que fazem sentido para o negócio.</p>
+            <p>Atuo da estratégia à execução, conectando contexto, produto e sistemas para criar soluções que funcionam hoje e continuam fazendo sentido à medida que crescem.</p>
           </div>
           <figure class="portrait">
             <img src="assets/images/retrato-paulo.jpg" width="1280" height="719" alt="Retrato de Paulo Henrique Araújo em preto e branco" fetchpriority="high" decoding="async">
@@ -46,10 +46,10 @@
         <section class="career section" aria-labelledby="trajetoria">
           <div class="section-heading">
             <h2 class="eyebrow" id="trajetoria">Trajetória</h2>
-            <p class="career-summary mono">7 anos em tecnologia · 5 em design de produto</p>
+            <p class="career-summary mono">9 anos em tecnologia · 6 em design de produto</p>
           </div>
           <ol class="timeline" aria-label="Trajetória profissional em ordem cronológica">
-            <li><p class="period mono">2018 - 2020</p><h3>X2 Digital</h3><p class="stage mono">Origem</p></li>
+            <li><p class="period mono">2020</p><h3>X2 Digital</h3><p class="stage mono">Origem</p></li>
             <li><p class="period mono">2021</p><h3>Blue Express</h3><p class="stage mono">Virada</p></li>
             <li><p class="period mono">2022 — 2024</p><h3>Crefisa</h3><p class="stage mono">Descoberta</p></li>
             <li><p class="period mono">2024</p><h3>Azul</h3><p class="stage mono">Execução</p></li>
@@ -61,22 +61,25 @@
         <section class="education section" aria-labelledby="formacao">
           <h2 class="eyebrow" id="formacao">Formação</h2>
           <ul class="education-list">
-            <li><h3>Escola Técnica Estadual - CPS</h3><p>Técnico em Análise e Desenvolvimento de Sistemas</p><span class="mono">2018 — 2019</span></li>
             <li><h3>Universidade Nove de Julho</h3><p>Bacharelado em Design</p><span class="mono">2021 — 2024</span></li>
+            <li><h3>Escola Técnica Estadual - CPS</h3><p>Técnico em Análise e Desenvolvimento de Sistemas</p><span class="mono">2018 — 2019</span></li>
           </ul>
         </section>
-
-        <section class="contact section" id="contato" aria-labelledby="proximo-passo">
-          <h2 class="eyebrow" id="proximo-passo">Próximo passo</h2>
-          <a class="contact-link" href="mailto:contato@paulohenriquearaujo.com">Fale comigo</a>
-        </section>
       </main>
-
-      <footer class="footer mono">
-        <p class="footer-destinations"><a href="index.html">Home</a><span aria-hidden="true"> · </span><a href="projetos/index.html">Portfólio</a><span aria-hidden="true"> · </span><a href="modo/index.html">Modo</a></p>
-        <a class="linkedin" href="https://www.linkedin.com/in/paulojuara/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <p class="location">São Paulo, Brasil · 2026</p>
-      </footer>
     </div>
+
+    <footer class="contato" id="contato" aria-labelledby="contato-titulo">
+      <div class="page contato-corpo">
+        <div class="contato-topo">
+          <h2 class="contato-titulo" id="contato-titulo"><a href="fale-comigo.html">Fale comigo <span aria-hidden="true">↗</span></a></h2>
+          <p class="contato-texto">Produto, sistemas de design e times que precisam ganhar consistência sem perder velocidade.</p>
+        </div>
+        <hr class="contato-regua">
+        <div class="contato-rodape mono">
+          <p><a href="index.html">Home</a><span aria-hidden="true"> · </span><a href="sobre-mim.html">Sobre mim</a></p>
+          <p class="location">São Paulo, Brasil · 2026</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

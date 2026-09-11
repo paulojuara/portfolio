@@ -1,6 +1,6 @@
 @font-face{font-family:Geist;src:url('../fonts/geist-variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
 @font-face{font-family:'Geist Mono';src:url('../fonts/geist-mono-variable.ttf') format('truetype');font-style:normal;font-weight:100 900;font-display:swap}
-:root{--case-ink:#0d0d0b;--case-body:#383733;--case-muted:#6f6b62;--case-rule:#e4e4df;--case-paper:#fff;--case-accent:#d64000;--case-gutter:clamp(1.5rem,4.445vw,4rem);font-family:Geist,Arial,sans-serif;color:var(--case-ink);background:var(--case-paper);font-synthesis:none;-webkit-font-smoothing:antialiased}
+:root{--case-ink:#0d0d0b;--case-body:#383733;--case-muted:#6f6b62;--case-rule:#e4e4df;--case-paper:#fff;--case-accent:#d64000;--case-gutter:max(1.5rem,4.445vw);font-family:Geist,Arial,sans-serif;color:var(--case-ink);background:var(--case-paper);font-synthesis:none;-webkit-font-smoothing:antialiased}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:2rem}
 body,h1,h2,h3,p,figure,dl,dd{margin:0}
@@ -10,8 +10,8 @@ a:hover{text-decoration:underline}
 a:focus-visible,button:focus-visible{outline:2px solid var(--case-accent);outline-offset:5px}
 img{display:block;max-width:100%;height:auto}
 button{font:inherit}
-.container{width:100%;max-width:90rem;margin-inline:auto;padding-inline:var(--case-gutter)}
-.mono,.eyebrow,dt,.case-header,.case-footer{font-family:'Geist Mono',monospace;font-weight:500;text-transform:uppercase}
+.container{width:100%;padding-inline:var(--case-gutter)}
+.mono,.eyebrow,dt,.case-header{font-family:'Geist Mono',monospace;font-weight:500;text-transform:uppercase}
 .eyebrow{font-size:.6875rem;line-height:.875rem;color:var(--case-muted);letter-spacing:0}
 .dark{background:var(--case-ink);color:#faf8f4}
 .skip-link{position:fixed;z-index:10;top:1rem;left:1rem;padding:.75rem 1rem;background:var(--case-ink);color:var(--case-paper);transform:translateY(-200%)}
@@ -108,17 +108,19 @@ dt{font-size:.5625rem;line-height:.75rem;margin-bottom:.5rem;letter-spacing:0}
 .executive-details ul{list-style:none;padding:0;margin:1.5rem 0 0}
 .executive-details li{border-top:1px solid var(--case-rule);padding-block:1rem;font-size:1rem;line-height:1.5625;color:var(--case-body)}
 .reflection{display:grid;grid-template-columns:272fr 592fr 272fr;gap:3.5rem}
-.contact-content{display:grid;grid-template-columns:880fr 320fr;gap:7rem;padding-block:4.5rem 3.5rem}
-.contact h2{font-size:4.75rem;line-height:1;font-weight:600;margin-block:1.375rem;color:#fbfbf8}
-.contact h2 a{text-decoration:none}
-.contact h2 a:hover{text-decoration:underline;text-decoration-thickness:2px}
-.contact-description{font-size:1.125rem;line-height:1.5;max-width:40.625rem;color:#b8b8ad}
-.contact-links{padding-top:2.5rem}
-.contact-links>a{display:block;font-family:'Geist Mono',monospace;font-size:.6875rem;text-transform:uppercase;text-decoration:none;width:fit-content;margin-top:1.5rem}
-.case-footer{display:flex;justify-content:space-between;gap:2rem;padding-block:1.5rem 2rem;border-top:1px solid #272725;font-size:.625rem;line-height:1.5;color:#d3d3ce}
-.case-footer nav{display:flex;flex-wrap:wrap;gap:.75rem}
-.case-footer a{text-decoration:none}
-.case-footer a:hover,.contact-links>a:hover,.case-header nav a:hover{text-decoration:underline}
+/* ── contato · rodapé ──────────────────────────────────────────
+   Bloco compartilhado com Sobre mim e Portfólio — Figma
+   "08 · Contato": título, texto e régua, com um rodapé simples
+   por baixo (sem mais a coluna de LinkedIn/E-mail). */
+.contato-corpo{display:flex;flex-direction:column;gap:3.375rem;padding-block:4.5rem 3.5rem}
+.contato-titulo{font-size:4.75rem;line-height:1;font-weight:600;letter-spacing:-.022em}
+.contato-titulo a{color:#fbfbf8;text-decoration:none}
+.contato-titulo a:hover{text-decoration:underline;text-decoration-thickness:2px}
+.contato-texto{margin-top:1.375rem;max-width:40.625rem;font-size:1.125rem;line-height:1.5;color:#b8b8ad}
+.contato-regua{border:0;border-top:1px solid #2e2e2b}
+.contato-rodape{display:flex;justify-content:space-between;gap:.75rem 2rem;flex-wrap:wrap;font-family:'Geist Mono',monospace;font-weight:500;text-transform:uppercase;font-size:.625rem;line-height:1.5;color:#a3a399}
+.contato-rodape a{text-decoration:none}
+.contato-rodape a:hover,.case-header nav a:hover{text-decoration:underline}
 
 /* Align the desktop reading grid to the 1440px Figma frame. */
 @media(min-width:1101px){
@@ -167,7 +169,7 @@ dt{font-size:.5625rem;line-height:.75rem;margin-bottom:.5rem;letter-spacing:0}
   .results .section{padding-block:6rem}
   .results .section-heading{grid-template-columns:25% 75%;min-height:9.0625rem;margin-bottom:0}
   .results .section-heading>.prose{max-width:42.6875rem;color:#b8b8ad}
-  .results .eyebrow,.results dt,.contact .eyebrow{color:#a3a399}
+  .results .eyebrow,.results dt{color:#a3a399}
   .result-grid{gap:0;padding-top:3.5rem}
   .result-grid>div{gap:1.5rem}
   .result-grid dt{max-width:17rem;line-height:.875rem}
@@ -188,11 +190,7 @@ dt{font-size:.5625rem;line-height:.75rem;margin-bottom:.5rem;letter-spacing:0}
   .executive-details li{padding-block:.8125rem 1rem}
   .executive-details li:last-child{padding-bottom:0}
   .reflection{padding-top:4.5625rem}
-  .contact-content{grid-template-columns:880fr 300fr;gap:8.25rem;padding-block:4rem 3.375rem}
-  .contact-links{padding-top:0}
-  .contact-links .eyebrow{font-size:.5625rem;line-height:.75rem}
-  .contact-links>a{margin-top:.625rem;line-height:.875rem}
-  .case-footer{padding-block:3.875rem 2.75rem;font-size:.5625rem;line-height:.75rem;color:#a3a399}
+  .contato-corpo{padding-block:4rem 3.375rem}
 }
 
 @media(max-width:1100px){
@@ -209,7 +207,6 @@ dt{font-size:.5625rem;line-height:.75rem;margin-bottom:.5rem;letter-spacing:0}
   .timeline{padding:1.5rem}
   .timeline li{padding-right:1rem}
   .reflection{grid-template-columns:1fr 2fr}
-  .contact-content{gap:3rem}
 }
 @media(max-width:800px){
   .architecture-heading{grid-template-columns:1fr;gap:1.5rem}
@@ -228,7 +225,7 @@ dt{font-size:.5625rem;line-height:.75rem;margin-bottom:.5rem;letter-spacing:0}
 }
 @media(max-width:650px){
   .ruled,.architecture,.executive,.results .section,.decisions .section{padding-block:3.5rem}
-  .section-heading,.prioritization,.artifact-summary,.storybook,.reflection,.contact-content{display:block}
+  .section-heading,.prioritization,.artifact-summary,.storybook,.reflection{display:block}
   .section-heading{margin-bottom:2.5rem}
   .section-heading>.section-title{margin-bottom:1.5rem}
   .section-heading>.prose{padding-top:0}
@@ -250,8 +247,7 @@ dt{font-size:.5625rem;line-height:.75rem;margin-bottom:.5rem;letter-spacing:0}
   .results .section-heading{margin-bottom:2rem;display:block}
   .results .section-heading>.eyebrow{margin-bottom:1.5rem}
   .timeline{margin-bottom:2.5rem}
-  .contact-content{padding-block:3.5rem 2.5rem}
-  .contact h2{font-size:3rem}
-  .contact-links{padding-top:2.5rem}
-  .case-footer{flex-direction:column;gap:1.5rem}
+  .contato-corpo{padding-block:3.5rem 2.5rem;gap:2.25rem}
+  .contato-titulo{font-size:3rem}
+  .contato-rodape{flex-direction:column;gap:.5rem}
 }

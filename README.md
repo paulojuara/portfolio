@@ -10,6 +10,7 @@ Não há instalação de dependências. Os links internos usam arquivos HTML exp
 portfolio/
 ├── index.html                 # Página inicial
 ├── sobre-mim.html             # Sobre mim — implementação atual do Figma
+├── fale-comigo.html           # Fale comigo — implementação atual do Figma
 ├── manutencao.html            # Página de manutenção
 ├── projetos/
 │   ├── index.html             # Índice de projetos
@@ -22,6 +23,7 @@ portfolio/
 │   │   ├── tokens.css         # Tokens usados por início, projetos e Modo
 │   │   ├── base.css           # Estilos compartilhados dessas três páginas
 │   │   ├── styles.css         # Estilos atuais da página Sobre mim
+│   │   ├── fale-comigo.css    # Estilos da página Fale comigo
 │   │   ├── sobre.css          # Estilos anteriores, preservados como referência
 │   │   ├── manutencao.css     # Estilos da página de manutenção
 │   │   ├── case.css           # Estilos do caso Dom DS
@@ -43,6 +45,7 @@ portfolio/
 ## Edição
 
 - **Sobre mim:** edite `sobre-mim.html` e `assets/css/styles.css`. A página usa a foto exportada do Figma e fontes Geist locais; funciona sem conexão. Referência: frame `82:2`, consultado em 8 de setembro de 2026.
+- **Fale comigo:** edite `fale-comigo.html` e `assets/css/fale-comigo.css`. Página autocontida e escura — malha técnica, três cartões (e-mail, WhatsApp, LinkedIn) — nos mesmos moldes de `manutencao.css`, com fontes Geist locais. Referência: frame `289:7304` do arquivo Figma `TvLJ3bRAY0jKiQPjm8BL2R`, consultado em 10 de setembro de 2026. Todos os links "Fale comigo" do site (início, Sobre mim, projetos, caso Thomson Reuters, Modo e manutenção) apontam para esta página; antes iam para `mailto:contato@paulohenriquearaujo.com` ou para a âncora `#contato`.
 - **Dom DS · Thomson Reuters:** edite `projetos/thomson-reuters/index.html` e `assets/css/case.css`. Referência: frame `193:3` do arquivo Figma `TvLJ3bRAY0jKiQPjm8BL2R`, consultado em 9 de setembro de 2026. O caso usa fontes locais, textos em HTML, timeline responsiva e 13 imagens que podem ser abertas em tamanho original. O número de componentes em homologação foi confirmado como 45. O Core Web usa Stencil para Angular e React; Core App usa React Native. A legenda editorial provisória do Storybook foi adaptada para o leitor do caso.
 - **Assets do caso:** a origem de cada exportação está em `assets/images/thomson-reuters/manifest.json`. A prancha de tokens foi exportada com seus limites completos para evitar o corte causado pelo frame da seção no Figma.
 - **Revisão visual do caso:** grade, tipografia, espaçamentos, resultados, timeline e contato conferidos contra o frame de 1440 px. A matriz de priorização usa a exportação atual do node `251:19969`. A adaptação para celular foi conferida em uma área útil de 375 px, sem transbordamento horizontal.
@@ -53,6 +56,6 @@ portfolio/
 
 ## Navegação e distribuição
 
-Início, Sobre mim, projetos e Modo estão ligados por caminhos locais. “Meu resumo” usa o endereço do Google Drive já presente na página Sobre mim; LinkedIn e e-mail mantêm seus destinos.
+Início, Sobre mim, Fale comigo, projetos e Modo estão ligados por caminhos locais. “Meu resumo” usa o endereço do Google Drive já presente na página Sobre mim; “Fale comigo” leva a `fale-comigo.html` em todas as páginas; LinkedIn e e-mail avulsos (fora dessa página) mantêm seus destinos diretos.
 
 Copie a pasta inteira ou o conteúdo de `dist/` para distribuir o site, preservando a estrutura de `assets`, `projetos` e `modo`. Alterações locais não publicam automaticamente. A configuração do Sites usa a pasta `dist/` para uma prévia privada; o domínio pessoal não é alterado.

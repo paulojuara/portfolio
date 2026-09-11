@@ -6,6 +6,7 @@
   var root = document.documentElement;
   var active = null;
   var arrivalCleanup = null;
+  var etiquetaChegada = null;
   var prefetched = new Set();
 
   function route(path) { return path.replace(/\/index\.html$/, '/'); }
@@ -19,9 +20,12 @@
         Date.now() - arrival.time >= 0 && Date.now() - arrival.time < 10000 &&
         (arrival.kind === 'about' || arrival.kind === 'portfolio')) {
       root.dataset.pageArrival = arrival.kind;
+      if (arrival.label) etiquetaChegada = arrival.label;
+      // A coreografia de chegada termina em ~740ms; a folga evita
+      // que o atributo saia no meio de uma animação.
       arrivalCleanup = window.setTimeout(function () {
         delete root.dataset.pageArrival;
-      }, 800);
+      }, 1200);
     }
   } catch (_) { /* Normal navigation remains available. */ }
 
@@ -41,7 +45,8 @@
     window.clearTimeout(active.timer);
     try {
       sessionStorage.setItem(storageKey, JSON.stringify({
-        path: active.url.pathname, kind: active.kind, time: Date.now()
+        path: active.url.pathname, kind: active.kind, time: Date.now(),
+        label: active.label
       }));
     } catch (_) { /* The exit still works without an arrival animation. */ }
     location.assign(active.url.href);
@@ -61,7 +66,32 @@
     document.head.appendChild(hint);
   }
 
+  // O viajante retoma a coordenada que tinha na página anterior e
+  // vai até o rótulo do hero, que só aparece quando ele chega.
+  function entregarRotulo() {
+    if (!etiquetaChegada) return;
+    var alvo = document.querySelector('.pf-hero .pf-rotulo') ||
+               document.querySelector('.hero .eyebrow') ||
+               document.querySelector('.abertura .rotulo');
+    if (!alvo) return;
+    var destino = alvo.getBoundingClientRect();
+    var viajante = document.createElement('span');
+    viajante.className = 'page-rotulo page-rotulo--chegada';
+    viajante.textContent = etiquetaChegada.texto;
+    viajante.setAttribute('aria-hidden', 'true');
+    viajante.style.left = etiquetaChegada.x + 'px';
+    viajante.style.top = etiquetaChegada.y + 'px';
+    viajante.style.setProperty('--rotulo-dx', (destino.left - etiquetaChegada.x) + 'px');
+    viajante.style.setProperty('--rotulo-dy', (destino.top - etiquetaChegada.y) + 'px');
+    document.body.appendChild(viajante);
+    function remover() { if (viajante.parentNode) viajante.remove(); }
+    viajante.addEventListener('animationend', remover, {once: true});
+    // Uma animação interrompida não pode deixar o rótulo na tela.
+    window.setTimeout(remover, 1200);
+  }
+
   function setup() {
+    entregarRotulo();
     var links = document.querySelectorAll('.home-card[data-page-transition]');
     links.forEach(function (link) {
       link.addEventListener('pointerenter', function () { prefetch(link); }, {once: true});
@@ -73,47 +103,54 @@
         if (active) { event.preventDefault(); return; }
         if (reducedMotion.matches) return;
         var url = new URL(link.href, location.href);
-        var art = link.querySelector('.home-card-art');
-        if (url.origin !== location.origin || !art ||
-            !window.CSS || !CSS.supports('clip-path', 'polygon(0 0, 100% 0, 100% 100%, 0 100%)')) return;
-        var images = Array.from(art.querySelectorAll('img'));
-        if (!images.every(function (img) { return img.complete && img.naturalWidth > 0; })) return;
+        if (url.origin !== location.origin ||
+            !window.CSS || !CSS.supports('clip-path', 'inset(0px 0px 0px 0px)')) return;
 
         event.preventDefault();
         prefetch(link);
-        var bounds = art.getBoundingClientRect();
+        // A virada começa exatamente sobre o card e abre até a borda.
+        var bounds = link.getBoundingClientRect();
         var kind = link.dataset.pageTransition;
         var overlay = document.createElement('div');
         overlay.className = 'page-departure';
-        overlay.dataset.sticker = kind;
         overlay.setAttribute('aria-hidden', 'true');
-        overlay.style.setProperty('--departure-origin-x', (bounds.left + bounds.width / 2) + 'px');
-        overlay.style.setProperty('--departure-origin-y', (bounds.top + bounds.height / 2) + 'px');
-        overlay.style.setProperty('--departure-x', (innerWidth / 2 - bounds.left - bounds.width / 2) + 'px');
-        overlay.style.setProperty('--departure-y', (innerHeight * .45 - bounds.top - bounds.height / 2) + 'px');
-        overlay.style.setProperty('--departure-tilt', kind === 'about' ? '-8deg' : '8deg');
+        overlay.style.setProperty('--departure-top', bounds.top + 'px');
+        overlay.style.setProperty('--departure-right', (innerWidth - bounds.right) + 'px');
+        overlay.style.setProperty('--departure-bottom', (innerHeight - bounds.bottom) + 'px');
+        overlay.style.setProperty('--departure-left', bounds.left + 'px');
 
         var sheet = document.createElement('div');
         sheet.className = 'page-departure-sheet';
-        var sticker = document.createElement('div');
-        sticker.className = 'page-departure-sticker home-card--' + kind;
-        sticker.style.left = bounds.left + 'px';
-        sticker.style.top = bounds.top + 'px';
-        sticker.style.width = bounds.width + 'px';
-        sticker.style.height = bounds.height + 'px';
-        sticker.appendChild(art.cloneNode(true));
-        overlay.append(sheet, sticker);
+        overlay.appendChild(sheet);
+
+        // O rótulo do card sobe para cima da folha e fica parado:
+        // é a coordenada que a próxima página vai retomar.
+        var etiqueta = null;
+        var rotulo = link.querySelector('.home-card-rotulo');
+        if (rotulo) {
+          var lr = rotulo.getBoundingClientRect();
+          etiqueta = {x: lr.left, y: lr.top, texto: rotulo.textContent};
+          var copia = document.createElement('span');
+          copia.className = 'page-rotulo page-rotulo--saida';
+          copia.textContent = etiqueta.texto;
+          copia.setAttribute('aria-hidden', 'true');
+          copia.style.left = etiqueta.x + 'px';
+          copia.style.top = etiqueta.y + 'px';
+          overlay.appendChild(copia);
+        }
+
         document.body.appendChild(overlay);
         link.setAttribute('data-departing', '');
         document.body.classList.add('is-departing');
         document.body.setAttribute('aria-busy', 'true');
 
-        active = {link: link, overlay: overlay, url: url, kind: kind, navigating: false};
-        sticker.addEventListener('animationend', function (animation) {
-          if (animation.target === sticker) navigate();
+        active = {link: link, overlay: overlay, url: url, kind: kind,
+                  label: etiqueta, navigating: false};
+        sheet.addEventListener('animationend', function (animation) {
+          if (animation.target === sheet) navigate();
         }, {once: true});
         // A disabled stylesheet or interrupted animation must not trap the link.
-        active.timer = window.setTimeout(navigate, 900);
+        active.timer = window.setTimeout(navigate, 520);
       });
     });
   }

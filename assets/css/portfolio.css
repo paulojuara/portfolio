@@ -1,0 +1,436 @@
+/* ============================================================
+   portfolio.css — índice editorial de trabalhos selecionados.
+   Figma 274:1700 (P · Portfólio — v3 · proposta), 1440 × 2931.
+
+   O conteúdo é fullscreen: a folha não tem teto de largura, a
+   margem é proporcional (4,445vw = os 64 do desenho) e todo o
+   ritmo — tipo, alturas de linha, respiros — escala junto até
+   1920 e depois trava, para o texto corrido não inchar.
+   Cada clamp carrega o valor do Figma no comentário.
+
+   A grade das linhas do índice é 400 | 640 | 272 de 1312, com
+   as colunas A e B recuadas 40, o que devolve os 360 | 600 do
+   desenho e deixa a seta encostada na margem direita.
+
+   Depende de tokens.css e base.css, nessa ordem.
+   ============================================================ */
+
+.portfolio-page{
+  /* ── tipo: exato em 1440, escala até 1920 ─────────────────── */
+  --pf-t-hero:clamp(2.75rem,6.4vw,7.75rem);        /* 92 */
+  --pf-t-empresa:clamp(2rem,3.61vw,4.3125rem);     /* 52 */
+  --pf-t-secao:clamp(1.5rem,2.36vw,2.8125rem);     /* 34 */
+  --pf-t-chamada:clamp(2.25rem,5.28vw,6.3125rem);  /* 76 */
+  --pf-t-fora:clamp(1.375rem,1.94vw,2.3125rem);    /* 28 */
+  --pf-t-seta:clamp(1.75rem,2.78vw,3.3125rem);     /* 40 */
+  /* corrido: escala menos e trava antes — medida de leitura */
+  --pf-t-frase:clamp(1.125rem,1.53vw,1.5rem);      /* 22 */
+  --pf-t-deck:clamp(1.0625rem,1.46vw,1.4375rem);   /* 21 */
+
+  /* ── ritmo vertical ───────────────────────────────────────── */
+  --pf-v22:clamp(1rem,1.53vw,1.8125rem);
+  --pf-v26:clamp(1.25rem,1.81vw,2.125rem);
+  --pf-v28:clamp(1.25rem,1.94vw,2.3125rem);
+  --pf-v32:clamp(1.5rem,2.22vw,2.625rem);
+  --pf-v40:clamp(1.75rem,2.78vw,3.3125rem);
+  --pf-v45:clamp(2rem,3.13vw,3.75rem);
+  --pf-v54:clamp(2rem,3.75vw,4.5rem);
+  --pf-v48:clamp(2rem,3.33vw,4rem);
+  --pf-v64:clamp(3rem,4.44vw,5.3125rem);
+  --pf-v70:clamp(3rem,4.86vw,5.8125rem);
+  --pf-v72:clamp(3rem,5vw,6rem);
+  --pf-v98:clamp(3rem,6.81vw,8.1875rem);
+  --pf-v80:clamp(3rem,5.56vw,6.625rem);
+  --pf-v134:clamp(4rem,9.31vw,11rem);
+  --pf-v152:clamp(4rem,10.56vw,12.5rem);
+
+  /* ── alturas das linhas do índice ─────────────────────────── */
+  --pf-h-alto:clamp(20rem,26.39vw,31.6875rem);     /* 380 */
+  --pf-h-linha:clamp(14rem,18.06vw,24.25rem);      /* 260 */
+  --pf-h-curto:clamp(12.5rem,16.39vw,22rem);       /* 236 */
+
+  /* calha da folha — os 64 do desenho, proporcionais */
+  --pf-gutter:max(1.5rem,4.445vw);
+
+  background:var(--pf-fundo);
+  color:var(--pf-titulo);
+}
+
+/* a folha desta página ocupa a tela inteira */
+.portfolio-page .folha{
+  width:100%;
+  max-width:none;
+  padding-inline:var(--pf-gutter);
+}
+
+/* faixa que sangra até a borda da tela mantendo o conteúdo na
+   grade: margem negativa da calha, devolvida como padding.
+   .pf-rodape agora mora dentro de .pf-contato, não precisa da
+   própria faixa. */
+.pf-contato{
+  margin-inline:calc(var(--pf-gutter) * -1);
+  padding-inline:var(--pf-gutter);
+  background:#0d0d0b;
+}
+
+/* ── vocabulário mono ──────────────────────────────────────────
+   O desenho usa entreletra 0: Geist Mono já é larga o bastante.
+   Por isso estas classes não reaproveitam .rotulo do base.css. */
+.pf-rotulo{
+  font-family:var(--mono);
+  font-weight:500;
+  font-size:.625rem;
+  line-height:1.4;
+  letter-spacing:0;
+  text-transform:uppercase;
+  color:var(--pf-rotulo);
+}
+.pf-nota{
+  font-family:var(--mono);
+  font-weight:500;
+  font-size:.5625rem;
+  line-height:1.3333;
+  letter-spacing:0;
+  text-transform:uppercase;
+  color:var(--pf-rotulo);
+}
+
+.pf-pular{
+  position:fixed;
+  top:.75rem;
+  left:.75rem;
+  z-index:6;
+  padding:.5rem 1rem;
+  background:var(--pf-titulo);
+  color:var(--pf-fundo);
+  font-family:var(--mono);
+  font-size:.625rem;
+  text-transform:uppercase;
+  transform:translateY(-200%);
+}
+.pf-pular:focus{transform:none}
+
+.portfolio-page a:focus-visible{outline-color:var(--pf-titulo)}
+
+/* ── topo ──────────────────────────────────────────────────── */
+.pf-topo{
+  align-items:flex-end;
+  padding-top:1.75rem;
+  padding-bottom:2.375rem;
+  border-bottom:1px solid var(--pf-fio);
+}
+.pf-topo .assinatura{
+  letter-spacing:0;
+  font-size:.6875rem;
+  line-height:1.2727;
+  color:var(--pf-titulo);
+}
+.pf-topo .assinatura b{
+  display:block;
+  margin-top:.25rem;
+  font-weight:500;
+  font-size:.5625rem;
+  line-height:1.3333;
+  color:var(--pf-rotulo);
+}
+.pf-topo .utilitarios{gap:.75rem 1.75rem}
+.pf-topo .utilitarios a{
+  letter-spacing:0;
+  font-size:.625rem;
+  line-height:1.3;
+  color:var(--pf-titulo);
+  box-shadow:inset 0 -1px 0 transparent;
+}
+.pf-topo .utilitarios a:hover{box-shadow:inset 0 -1px 0 var(--pf-titulo)}
+
+/* ── hero ──────────────────────────────────────────────────── */
+.pf-hero{
+  padding-top:var(--pf-v70);
+  padding-bottom:var(--pf-v80);
+  border-bottom:1px solid var(--pf-fio);
+}
+.pf-hero h1{
+  margin-top:var(--pf-v54);
+  font-size:var(--pf-t-hero);
+  font-weight:600;
+  line-height:.9565;
+  letter-spacing:-.022em;
+  color:var(--pf-titulo);
+}
+.pf-hero h1 span{display:block}
+.pf-deck{
+  margin-top:var(--pf-v32);
+  max-width:min(45.5vw,46rem);         /* 650 em 1440 */
+  font-size:var(--pf-t-deck);
+  line-height:1.5238;
+  color:var(--pf-corpo);
+}
+
+.pf-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.625rem;
+  margin-top:var(--pf-v40);
+  list-style:none;
+}
+.pf-chips li{
+  display:flex;
+  align-items:center;
+  height:1.75rem;
+  padding-inline:.6875rem;
+  border:1px solid var(--pf-chip);
+  border-radius:.875rem;
+  font-family:var(--mono);
+  font-weight:500;
+  font-size:.5625rem;
+  line-height:1.3333;
+  letter-spacing:0;
+  text-transform:uppercase;
+  color:var(--pf-rotulo);
+}
+
+/* ── índice ────────────────────────────────────────────────── */
+.pf-indice{padding-top:var(--pf-v152);padding-bottom:var(--pf-v72)}
+.pf-indice__cabecalho{
+  display:flex;
+  justify-content:space-between;
+  gap:1rem 2rem;
+  flex-wrap:wrap;
+}
+.pf-indice__intro{
+  display:grid;
+  grid-template-columns:400fr 912fr;
+  margin-top:var(--pf-v22);
+}
+.pf-indice__intro h2{
+  font-size:var(--pf-t-secao);
+  font-weight:600;
+  line-height:1.1176;
+  letter-spacing:-.022em;
+  color:var(--pf-titulo);
+}
+.pf-indice__intro h2 span{display:block}
+.pf-indice__intro p{
+  margin-top:.6875rem;
+  max-width:min(42vw,42rem);           /* 600 em 1440 */
+  font-size:1rem;
+  line-height:1.5;
+  color:var(--pf-corpo);
+}
+
+.pf-lista{
+  list-style:none;
+  margin-top:var(--pf-v32);
+  border-top:1px solid var(--pf-fio);
+  border-bottom:1px solid var(--pf-fio);
+}
+.pf-lista li + li{border-top:1px solid var(--pf-fio)}
+
+/* ── linha do índice ───────────────────────────────────────── */
+.pf-case{
+  position:relative;
+  isolation:isolate;
+  display:grid;
+  grid-template-columns:400fr 640fr 272fr;
+  align-items:stretch;
+  min-height:var(--pf-h-linha);
+  padding-block:var(--pf-v40);
+}
+
+/* Hover do container: a superfície elevada aparece atrás do
+   conteúdo, sangrando 28 para os lados. O conteúdo não se mexe —
+   se o recuo fosse padding, a linha inteira pularia no hover e a
+   coluna A sairia do prumo com o cabeçalho da seção. */
+.pf-case::before{
+  content:"";
+  position:absolute;
+  inset:0 calc(var(--pf-v28) * -1);
+  z-index:-1;
+  background:var(--pf-elevado);
+  opacity:0;
+  transition:opacity .18s ease;
+}
+/* A calha é 32 e não 40 porque a barra de rolagem tira 15px da
+   folha: com 40 a coluna fica em 593 e a frase quebra em 3 linhas
+   em vez das 2 do desenho. Com 32 a medida volta aos 600. */
+.pf-case__id,
+.pf-case__arg{
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  padding-right:var(--pf-v32);
+}
+.pf-case__empresa{
+  margin-top:var(--pf-v22);
+  font-size:var(--pf-t-empresa);
+  font-weight:600;
+  line-height:1.0385;
+  letter-spacing:-.022em;
+  color:var(--pf-titulo);
+}
+.pf-case__frase{
+  margin-top:var(--pf-v40);
+  font-size:var(--pf-t-frase);
+  line-height:1.409;
+  color:var(--pf-corpo);
+}
+.pf-case__escopo{
+  margin-top:auto;
+  padding-top:var(--pf-v26);
+  border-top:1px solid var(--pf-fio);
+}
+.pf-case__seta{
+  justify-self:end;
+  align-self:start;
+  margin-top:var(--pf-v45);
+  font-size:var(--pf-t-seta);
+  line-height:1.05;
+  color:var(--pf-titulo);
+  transition:transform .22s cubic-bezier(.22,.61,.36,1);
+}
+
+/* as alturas carregam o peso: a primeira é mais alta, a última
+   mais curta — as duas do meio ficam no valor padrão */
+.pf-case--alto{min-height:var(--pf-h-alto)}
+.pf-case--curto{min-height:var(--pf-h-curto)}
+
+/* Estado ativo — hover e teclado dizem a mesma coisa. A página é
+   clara e a superfície de hover é escura, então a linha inteira
+   inverte: nome e seta também, senão somem no bloco. */
+.pf-case__empresa,
+.pf-case__frase,
+.pf-case__seta,
+.pf-case .pf-rotulo,
+.pf-case .pf-nota{transition:color .18s ease}
+
+.pf-case:focus-visible::before,
+.pf-case:hover::before{opacity:1}
+
+.pf-case:focus-visible .pf-case__empresa,
+.pf-case:focus-visible .pf-case__seta{color:var(--pf-titulo-inv)}
+.pf-case:focus-visible .pf-case__frase{color:var(--pf-corpo-inv)}
+.pf-case:focus-visible .pf-rotulo,
+.pf-case:focus-visible .pf-nota{color:var(--pf-rotulo-inv)}
+.pf-case:focus-visible{outline:2px solid var(--pf-titulo-inv);outline-offset:-2px}
+
+@media (hover:hover) and (pointer:fine){
+  .pf-case:hover .pf-case__empresa,
+  .pf-case:hover .pf-case__seta{color:var(--pf-titulo-inv)}
+  .pf-case:hover .pf-case__frase{color:var(--pf-corpo-inv)}
+  .pf-case:hover .pf-rotulo,
+  .pf-case:hover .pf-nota{color:var(--pf-rotulo-inv)}
+  .pf-case:hover .pf-case__seta{transform:translate(.18em,-.18em)}
+}
+
+/* ── fora do índice ────────────────────────────────────────── */
+.pf-fora{
+  display:grid;
+  grid-template-columns:400fr 640fr 272fr;
+  padding-top:var(--pf-v64);
+  padding-bottom:var(--pf-v98);
+}
+.pf-fora__titulo{
+  margin-top:.625rem;
+  font-size:var(--pf-t-fora);
+  font-weight:600;
+  line-height:1.107;
+  letter-spacing:-.022em;
+  color:var(--pf-titulo);
+}
+.pf-fora__titulo span{display:block}
+/* classe, não `.pf-fora p`: o seletor de elemento também pegava
+   o <p class="pf-rotulo"> e o inflava para 18/27 */
+.pf-fora__texto{
+  margin-top:1.6875rem;
+  max-width:min(42vw,42rem);           /* 600 em 1440 */
+  padding-right:var(--pf-v40);
+  font-size:1.125rem;
+  line-height:1.5;
+  color:var(--pf-corpo);
+}
+.pf-fora ul{list-style:none;display:grid;gap:.5rem;align-content:start;margin-top:1.5rem}
+
+/* ── contato · rodapé ──────────────────────────────────────────
+   Bloco compartilhado com Sobre mim — Figma "08 · Contato"
+   (293:7559 aqui, 293:7568 em Sobre mim). Título, texto e régua
+   ocupam a grade de 1312; o rodapé é uma linha simples por baixo. */
+.pf-contato{
+  padding-block:4rem 2.25rem;
+  display:flex;
+  flex-direction:column;
+  gap:3.375rem;
+}
+.pf-contato a:focus-visible{outline-color:#fbfbf8}
+.pf-contato__titulo{
+  font-size:var(--pf-t-chamada);
+  font-weight:600;
+  line-height:1;
+  letter-spacing:-.022em;
+}
+.pf-contato__titulo a{
+  display:inline-flex;
+  align-items:baseline;
+  gap:.25em;
+  color:#fbfbf8;
+}
+.pf-contato__titulo a:hover{text-decoration:none;color:#b8b8ad}
+.pf-contato__texto{
+  margin-top:var(--pf-v28);
+  max-width:min(42vw,42rem);           /* 600 em 1440 */
+  font-size:1.125rem;
+  line-height:1.5;
+  color:#b8b8ad;
+}
+.pf-contato__regua{border:0;border-top:1px solid #2e2e2b}
+
+.pf-rodape{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:.75rem 2rem;
+  flex-wrap:wrap;
+  font-size:.5625rem;
+  color:#a3a399;
+}
+.pf-rodape a:hover{color:#fbfbf8}
+
+/* ── abaixo de 900: a grade de três colunas vira pilha ─────── */
+@media (max-width:900px){
+  .pf-hero{padding-top:3rem;padding-bottom:3rem}
+  .pf-hero h1{margin-top:2rem}
+  .pf-deck{max-width:none}
+  .pf-indice{padding-top:4rem}
+  .pf-indice__intro,
+  .pf-fora{grid-template-columns:1fr}
+  .pf-indice__intro p{margin-top:1.25rem;max-width:none}
+
+  .pf-case{
+    grid-template-columns:1fr auto;
+    min-height:0;
+    gap:0 1.5rem;
+  }
+  .pf-case--alto,
+  .pf-case--curto{min-height:0}
+  .pf-case::before{inset:0 -1rem}
+  .pf-case__id,
+  .pf-case__arg{padding-right:0}
+  .pf-case__arg{grid-column:1 / -1;margin-top:1.5rem}
+  .pf-case__seta{margin-top:1.25rem}
+  .pf-case__frase{margin-top:1.25rem}
+  .pf-case__escopo{margin-top:1.5rem;padding-top:1.25rem}
+
+  .pf-fora__texto{padding-right:0;margin-top:1.25rem}
+  .pf-fora ul{margin-top:1.5rem}
+  .pf-contato__texto{max-width:none}
+  .pf-contato{padding-block:3rem 2rem;gap:2.25rem}
+  .pf-rodape{flex-direction:column;align-items:flex-start;gap:.5rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .pf-case::before,
+  .pf-case__frase,
+  .pf-case .pf-rotulo,
+  .pf-case .pf-nota,
+  .pf-case__seta,
+  .pf-chamada .seta{transition:none}
+}

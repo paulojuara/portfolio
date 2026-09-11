@@ -20,7 +20,7 @@
   --muted: #73706a;
   --rule: #efefef;
   --paper: #fff;
-  --gutter: 4rem;
+  --gutter: max(1.5rem, 4.445vw);
   font-family: Geist, Arial, sans-serif;
   color: var(--ink);
   background: var(--paper);
@@ -34,7 +34,7 @@ body, h1, h2, h3, p, figure, ol, ul { margin: 0; }
 a { color: inherit; text-decoration: none; text-underline-offset: .25em; }
 a:hover { text-decoration: underline; }
 a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; border-radius: 2px; }
-.page { max-width: 90rem; margin-inline: auto; padding-inline: var(--gutter); }
+.page { width: 100%; padding-inline: var(--gutter); }
 .mono, .eyebrow { font-family: "Geist Mono", monospace; font-weight: 500; text-transform: uppercase; }
 .mono { font-size: .6875rem; letter-spacing: .04em; line-height: 1.2; }
 .eyebrow { color: var(--muted); font-size: .6875rem; letter-spacing: .06em; line-height: 1.2; }
@@ -56,8 +56,9 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; border-rad
 .hero { min-height: 23.125rem; padding-top: 4.5rem; padding-bottom: 5rem; }
 .hero h1 { max-width: 62.5rem; margin-top: 1.175rem; font-size: 3.5rem; font-weight: 600; line-height: 1.107142857; letter-spacing: -.02em; }
 .section { border-top: 1px solid var(--rule); }
-.introduction { display: grid; grid-template-columns: minmax(0, 1fr) 34.75609756%; gap: 14.17682927%; padding-block: 5rem; }
-.introduction-copy > p { margin-top: 1.675rem; font-size: 1.25rem; font-weight: 400; line-height: 1.7; color: var(--body); }
+.introduction { display: grid; grid-template-columns: minmax(0, 1fr) 34.75609756%; align-items: center; gap: 14.17682927%; padding-block: 5rem; }
+.introduction-copy p { font-size: 1.25rem; font-weight: 400; line-height: 1.7; color: var(--body); }
+.introduction-copy p + p { margin-top: 1.5rem; }
 .portrait { position: relative; aspect-ratio: 456 / 546; width: 100%; overflow: hidden; border-radius: 1.5rem; box-shadow: 10px 10px 100px 1px rgb(0 0 0 / 25%); }
 /* Exact image crop exported by Figma; keep the original image bytes. */
 .portrait img { position: absolute; width: 222.14%; height: 104.21%; max-width: none; left: -64.16%; top: -4.17%; object-fit: fill; }
@@ -77,10 +78,18 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; border-rad
 .education-list h3 { padding-right: 1rem; font-size: 1.1875rem; letter-spacing: -.01em; font-weight: 500; line-height: 1.25; }
 .education-list p { color: var(--body); font-size: .9375rem; line-height: 1.4; padding-right: 1rem; }
 .education-list .mono { color: var(--muted); white-space: nowrap; }
-.contact { min-height: 25.0625rem; padding-top: 5rem; border-bottom: 1px solid var(--rule); }
-.contact-link { display: inline-block; margin-top: 2.55rem; padding-bottom: .9375rem; border-bottom: 1px solid var(--ink); font-size: 2.75rem; line-height: 1.15; font-weight: 600; letter-spacing: -.02em; }
-.contact-link:hover { text-decoration: none; color: var(--muted); border-bottom-color: currentColor; }
-.footer { min-height: 5.5625rem; padding-top: 1.6875rem; display: grid; grid-template-columns: 50% 25% 25%; align-items: start; color: var(--muted); font-size: .625rem; letter-spacing: .06em; }
+/* ── contato · rodapé ──────────────────────────────────────────
+   Faixa escura full-bleed, fora de .page — .contato-corpo reaplica
+   a mesma margem lateral via a própria classe .page por dentro. */
+.contato { background: #0d0d0b; color: #a3a399; }
+.contato-corpo { padding-block: 4rem 2.25rem; display: flex; flex-direction: column; gap: 3.375rem; }
+.contato-titulo { font-size: 4.75rem; font-weight: 600; line-height: 1; letter-spacing: -.02em; }
+.contato-titulo a { display: inline-flex; align-items: baseline; gap: .25em; color: #fbfbf8; }
+.contato-titulo a:hover { text-decoration: none; color: #b8b8ad; }
+.contato-texto { margin-top: 1.375rem; max-width: 40.625rem; font-size: 1.125rem; line-height: 1.5; color: #b8b8ad; }
+.contato-regua { border: 0; border-top: 1px solid #2e2e2b; }
+.contato-rodape { display: flex; justify-content: space-between; align-items: baseline; gap: 1.25rem; font-size: .5625rem; color: #a3a399; }
+.contato-rodape a:hover { color: #fbfbf8; }
 .location { text-align: right; }
 
 @media (max-width: 1199px) {
@@ -97,10 +106,9 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; border-rad
   .navigation { gap: 1.25rem; }
   .hero { min-height: auto; padding-block: 3.5rem 4rem; }
   .hero h1 { font-size: 2.75rem; line-height: 1.14; }
-  .desktop-break { display: none; }
   .introduction { padding-block: 4rem; grid-template-columns: minmax(0, 1fr) 38%; gap: 6%; align-items: start; }
-  .introduction-copy > p { font-size: 1.125rem; line-height: 1.7; }
-  .career, .education, .contact { padding-top: 4rem; }
+  .introduction-copy p { font-size: 1.125rem; line-height: 1.7; }
+  .career, .education { padding-top: 4rem; }
   .career { padding-bottom: 4rem; }
   .section-heading { align-items: flex-start; }
   .career-summary { max-width: 16rem; line-height: 1.6; }
@@ -110,10 +118,8 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; border-rad
   .education-list li { grid-template-columns: minmax(0, 1fr) auto; gap: .75rem 1rem; }
   .education-list p { grid-column: 1; grid-row: 2; }
   .education-list .mono { grid-column: 2; grid-row: 1; }
-  .contact { min-height: 20rem; }
-  .footer { min-height: 6rem; font-size: .625rem; grid-template-columns: 1fr auto; gap: 1.25rem; }
-  .linkedin { text-align: right; }
-  .location { grid-column: 1 / -1; text-align: left; padding-bottom: 1.5rem; }
+  .contato-titulo { font-size: 3.5rem; }
+  .contato-rodape { flex-wrap: wrap; gap: .5rem 1.25rem; }
 }
 @media (max-width: 599px) {
   :root { --gutter: 1.5rem; }
@@ -126,9 +132,10 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; border-rad
   .hero h1 { font-size: 2.125rem; line-height: 1.16; margin-top: 1.375rem; }
   .eyebrow { font-size: .75rem; }
   .introduction { display: flex; flex-direction: column; gap: 2.5rem; padding-block: 3rem; }
-  .introduction-copy > p { font-size: 1.125rem; margin-top: 1.5rem; }
+  .introduction-copy p { font-size: 1.125rem; }
+  .introduction-copy p + p { margin-top: 1.25rem; }
   .portrait { width: min(100%, 28.5rem); align-self: center; box-shadow: 6px 6px 50px 1px rgb(0 0 0 / 20%); }
-  .career, .education, .contact { padding-top: 3rem; }
+  .career, .education { padding-top: 3rem; }
   .career { padding-bottom: 3rem; }
   .section-heading { flex-direction: column; gap: 1rem; }
   .career-summary { max-width: none; font-size: .6875rem; text-align: left; }
@@ -148,9 +155,11 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 6px; border-rad
   .education-list h3 { font-size: 1.125rem; }
   .education-list p { font-size: 1rem; line-height: 1.5; }
   .education-list .mono { font-size: .75rem; }
-  .contact { min-height: 17rem; }
-  .contact-link { font-size: 2.5rem; margin-top: 2rem; padding-bottom: .625rem; }
-  .footer { padding-top: 1.5rem; }
+  .contato-corpo { padding-block: 3rem 2rem; gap: 2.25rem; }
+  .contato-titulo { font-size: 2.5rem; }
+  .contato-texto { margin-top: 1rem; font-size: 1rem; }
+  .contato-rodape { flex-direction: column; align-items: flex-start; gap: .5rem; }
+  .contato-rodape .location { text-align: left; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 @media print {

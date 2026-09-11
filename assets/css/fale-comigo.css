@@ -1,0 +1,235 @@
+@font-face {
+  font-family: Geist;
+  src: url("../fonts/geist-variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Geist Mono";
+  src: url("../fonts/geist-mono-variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+/* ============================================================
+   fale-comigo.css — página Fale comigo, Figma node 289:7304.
+   Autocontida como manutencao.css e styles.css: não depende de
+   tokens.css nem base.css. Reaproveita a receita de malha de
+   manutencao.css (duas gradientes repetidas, custo de render zero).
+   ============================================================ */
+:root {
+  color-scheme: dark;
+  --surface: #0b0b0a;
+  --mesh-line: #121110;
+  --hairline: #1f1e1c;
+  --card-bg: rgb(14 14 13 / .9);
+  --card-border: #3d3b37;
+  --ink-000: #faf8f4;  /* display, cartões */
+  --ink-400: #8e8981;  /* rótulos dos cartões */
+  --ink-500: #6b6760;  /* navegação inativa, subtítulo, rodapé */
+  --font-sans: Geist, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --gutter: max(1.5rem, 4.445vw);
+  --mesh-step: 40px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: var(--surface);
+  color: var(--ink-400);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 1px solid var(--ink-000); outline-offset: 4px; border-radius: 1px; }
+
+.fc-skip {
+  position: fixed;
+  top: .75rem;
+  left: .75rem;
+  z-index: 6;
+  padding: .5rem 1rem;
+  background: var(--ink-000);
+  color: var(--surface);
+  transform: translateY(-200%);
+}
+.fc-skip:focus { transform: none; }
+
+.fc-page {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+/* O <main> precisa ser container flex para .fc-canais{flex:1} esticar
+   e ocupar a tela inteira, como .home-main faz na Home. */
+.fc-page main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── topo ──────────────────────────────────────────────────── */
+.fc-header, .fc-hero, .fc-rodape { width: 100%; padding-inline: var(--gutter); }
+.fc-header {
+  padding-top: max(1.5rem, 5.333svh);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 2rem;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.fc-assinatura, .fc-nav a {
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-weight: 500;
+  letter-spacing: .109em;
+  text-transform: uppercase;
+}
+.fc-assinatura { color: var(--ink-000); }
+.fc-nav { display: flex; flex-wrap: wrap; gap: .75rem 2rem; }
+.fc-nav a {
+  color: var(--ink-000);
+  padding-block: .4375rem;
+  margin-block: -.4375rem;
+  text-underline-offset: .375rem;
+  transition: text-decoration-color 180ms ease;
+}
+.fc-nav a:hover, .fc-nav a:focus-visible { text-decoration: underline; }
+
+/* ── hero ──────────────────────────────────────────────────── */
+/* Mesma distribuição vertical da Home: uma faixa proporcional à
+   altura da tela (svh), com o conteúdo centralizado dentro dela —
+   não um preenchimento fixo em cima/baixo. */
+.fc-hero {
+  min-height: 40.888889svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 5.555556svh 0;
+}
+.fc-hero h1 {
+  margin: 0;
+  font-weight: 600;
+  font-size: clamp(2rem, 4.2vw, 3.75rem);
+  line-height: 1.034;
+  letter-spacing: -.037em;
+  color: var(--ink-000);
+  text-wrap: balance;
+}
+.fc-hero h1 span {
+  display: block;
+  margin-top: .125em;
+  font-size: clamp(1.5rem, 3.35vw, 3rem);
+  line-height: 1.29;
+  letter-spacing: -.046em;
+  color: var(--ink-500);
+  text-wrap: pretty;
+}
+
+/* ── canais sobre a malha técnica ──────────────────────────── */
+.fc-canais {
+  position: relative;
+  flex: 1;
+  padding-top: 4.444444svh;
+  border-top: 1px solid var(--hairline);
+}
+.fc-canais::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(to right,  var(--mesh-line) 0 1px, transparent 1px var(--mesh-step)),
+    repeating-linear-gradient(to bottom, var(--mesh-line) 0 1px, transparent 1px var(--mesh-step));
+}
+
+.fc-cartoes {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 clamp(2.5rem, 5.3vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+.fc-cartao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  min-height: 17.25rem;
+  padding: 1.5rem 1.5rem 1.375rem;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+/* Mesmo comportamento dos cards da Home: superfície só aparece no hover. */
+.fc-cartao:hover, .fc-cartao:focus-visible {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+}
+.fc-cartao .fc-rotulo {
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-weight: 500;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+}
+.fc-canal {
+  margin-top: 3.375rem;
+  font-weight: 600;
+  font-size: clamp(1.375rem, 1.945vw, 1.75rem);
+  line-height: 1.215;
+  letter-spacing: -.021em;
+  color: var(--ink-000);
+}
+.fc-cartao--email .fc-canal {
+  font-size: clamp(1rem, 1.6vw, 1.4375rem);
+  line-height: 1.26;
+  letter-spacing: -.026em;
+  overflow-wrap: anywhere;
+}
+.fc-acao {
+  display: inline-flex;
+  gap: 1.25em;
+  margin-top: auto;
+  padding-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-weight: 400;
+  letter-spacing: .073em;
+  text-transform: uppercase;
+  color: var(--ink-400);
+}
+.fc-acao .seta { display: inline-block; transition: transform 220ms cubic-bezier(.22, .61, .36, 1); }
+.fc-cartao:hover .seta, .fc-cartao:focus-visible .seta { transform: translate(.18em, -.18em); }
+
+/* ── rodapé ────────────────────────────────────────────────── */
+.fc-rodape {
+  margin-top: auto;
+  padding-block: 1.5rem max(1.5rem, 5.333svh);
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  letter-spacing: .055em;
+  color: var(--ink-500);
+}
+
+@media (max-width: 1080px) {
+  .fc-cartoes { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .fc-cartao { min-height: 0; }
+  .fc-canal { margin-top: 2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fc-cartao, .fc-acao .seta, .fc-nav a { transition: none; }
+}
